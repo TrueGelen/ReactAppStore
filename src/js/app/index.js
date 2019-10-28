@@ -6,19 +6,23 @@ import styles from './app.module.scss'
 import mainStyles from '../../scss/main.module.scss'
 
 class App extends React.Component {
+
 	render() {
-		console.log(routesMap)
+		this.phonesStore = this.props.rootStore.phones
+		this.televisionsStore = this.props.rootStore.televisions
+		this.tabletsStore = this.props.rootStore.tablets
+		//console.log(routesMap)
 		let routsContainers = routes.map((route) => {
-			console.log(route)
+			//console.log(route)
 			return <Route path={route.url}
 				component={route.container}
 				exact={route.exact}
 				key={route.url}
 			/>
 		})
-		console.log(routsContainers)
+		/* console.log(routsContainers)
 		console.log("STYLES========")
-		console.log(styles)
+		console.log(styles) */
 
 		return (
 			<Router>
@@ -34,9 +38,9 @@ class App extends React.Component {
 								<menu>
 									<ul>
 										{/* <li><Link to={routesMap.home}>Главная</Link></li> */}
-										<li><Link to={routesMap.tvs}>Телевизоры</Link></li>
-										<li><Link to={routesMap.phones}>Телефоны</Link></li>
-										<li><Link to={routesMap.tablets}>Планшеты</Link></li>
+										<li><Link to={routesMap.televisions} onClick={this.televisionsStore.getTelevisions}>Телевизоры</Link></li>
+										<li><Link to={routesMap.phones} onClick={this.phonesStore.getPhones}>Телефоны</Link></li>
+										<li><Link to={routesMap.tablets} onClick={this.tabletsStore.getTablets}>Планшеты</Link></li>
 									</ul>
 								</menu>
 								<div className={styles.cart}>

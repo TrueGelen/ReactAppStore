@@ -4,8 +4,11 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import { Provider } from 'mobx-react'
 import App from './js/app'
-import stores from './js/stores'
+import rootStore from './js/stores'
 
-console.log(scss)
+//temporary import for adding items to database
+//import './js/temporaryToAddData/addDataToFirebase'
 
-ReactDom.render(<Provider stores={stores}><App></App></Provider>, document.querySelector('#app'))
+//console.log(scss)
+
+ReactDom.render(<Provider rootStore={rootStore}><App></App></Provider>, document.querySelector('#app'))

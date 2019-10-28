@@ -1,9 +1,13 @@
 import React from 'react'
 import withStore from '../../hocs/withStore'
 
-function phones() {
+function phones(props) {
+	/* console.log(props)
+	console.log(props.rootStore.phones) */
 	return (
-		<div>	Phones</div>
+		<>
+			<div>	Phones</div>
+		</>
 	)
 }
 

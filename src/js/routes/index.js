@@ -1,5 +1,5 @@
 import phones from '../containers/phones'
-import tvs from '../containers/tv'
+import tvs from '../containers/televisions'
 import tablets from '../containers/tablets'
 import homePage from '../containers/homePage'
 import order from '../containers/order'
@@ -18,8 +18,8 @@ let routes = [
 		exact: true
 	},
 	{
-		name: 'tvs',
-		url: '/tvs',
+		name: 'televisions',
+		url: '/televisions',
 		container: tvs,
 		exact: true
 	},

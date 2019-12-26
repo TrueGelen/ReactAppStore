@@ -5,7 +5,7 @@ export default class {
 	constructor(rootStore) {
 		this.api = rootStore.api.phones
 
-		this.baseUrlImgs = '/assets/imgs/phones/'
+		this.baseUrlImgs = 'assets/imgs/phones/'
 	}
 
 	@action getPhones = async () => this.phones = await this.api.getPhones()

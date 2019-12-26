@@ -1,5 +1,7 @@
 import firebase from '../firebaseConfig/fbConfig'
 
+//addPhones()
+
 // this was added
 /* let tablets = [
 	{
@@ -115,175 +117,169 @@ tablets.forEach(tablet => {
 		});
 }) */
 
+function addPhones() {
+	let phones = [
+		{
+			title: 'Iphone 8',
+			price: 40000,
+			rest: 20,
+			description: {
+				diagonal: "4.7",
+				camera: "12",
+				processor: "A11"
+			},
+			imgs: ['iPhone/iPhone8/front.webp', 'iPhone/iPhone8/back.webp']
+		},
+		{
+			title: 'Iphone X',
+			price: 50000,
+			rest: 20,
+			description: {
+				diagonal: "5.8",
+				camera: "12",
+				processor: "A11"
+			},
+			imgs: ['iPhone/iPhoneX/front.webp', 'iPhone/iPhoneX/back.webp']
+		}, {
+			title: 'Iphone 7',
+			price: 30000,
+			rest: 30,
+			description: {
+				diagonal: "4.5",
+				camera: "10",
+				processor: "A10"
+			},
+			imgs: ['iPhone/iPhone7/front.webp', 'iPhone/iPhone7/back.webp']
+		}, {
+			title: 'Iphone 7 Plus',
+			price: 35000,
+			rest: 10,
+			description: {
+				diagonal: "4.7",
+				camera: "12",
+				processor: "A10"
+			},
+			imgs: ['iPhone/iPhone7Plus/front.webp', 'iPhone/iPhone7Plus/back.webp']
+		}, {
+			title: 'Iphone 8 Plus',
+			price: 45000,
+			rest: 10,
+			description: {
+				diagonal: "5",
+				camera: "11",
+				processor: "A11"
+			},
+			imgs: ['iPhone/iPhone8Plus/front.webp', 'iPhone/iPhone8Plus/back.webp']
+		}, {
+			title: 'Iphone 6',
+			price: 20000,
+			rest: 5,
+			description: {
+				diagonal: "4.3",
+				camera: "8",
+				processor: "A9"
+			},
+			imgs: ['iPhone/iPhone6/front.webp', 'iPhone/iPhone6/back.webp']
+		}, {
+			title: 'Iphone 6 Plus',
+			price: 40000,
+			rest: 8,
+			description: {
+				diagonal: "4.5",
+				camera: "10",
+				processor: "A9"
+			},
+			imgs: ['iPhone/iPhone6Plus/front.webp', 'iPhone/iPhone6Plus/back.webp']
+		}, {
+			title: 'Iphone 6S',
+			price: 25000,
+			rest: 7,
+			description: {
+				diagonal: "4.4",
+				camera: "12",
+				processor: "A10"
+			},
+			imgs: ['iPhone/iPhone6S/front.webp', 'iPhone/iPhone6S/back.webp']
+		},
+		{
+			title: 'Samsung Galaxy S10',
+			price: 60000,
+			rest: 30,
+			description: {
+				diagonal: "6.4",
+				camera: "16",
+				processor: "SD33"
+			},
+			imgs: ['Samsung/GalaxyS10/front.webp', 'Samsung/GalaxyS10/back.webp']
+		},
+		{
+			title: 'Samsung Galaxy S9',
+			price: 50000,
+			rest: 30,
+			description: {
+				diagonal: "6.2",
+				camera: "14",
+				processor: "SD30"
+			},
+			imgs: ['Samsung/GalaxyS9/front.webp', 'Samsung/GalaxyS9/back.webp']
+		},
+		{
+			title: 'Samsung Galaxy S8',
+			price: 40000,
+			rest: 30,
+			description: {
+				diagonal: "6",
+				camera: "12",
+				processor: "SD29"
+			},
+			imgs: ['Samsung/GalaxyS8/front.webp', 'Samsung/GalaxyS8/back.webp']
+		},
+		{
+			title: 'Samsung Galaxy S7',
+			price: 30000,
+			rest: 30,
+			description: {
+				diagonal: "5.8",
+				camera: "10",
+				processor: "SD27"
+			},
+			imgs: ['Samsung/GalaxyS7/front.webp', 'Samsung/GalaxyS7/back.webp']
+		},
+		{
+			title: 'Huawei M9',
+			price: 50000,
+			rest: 30,
+			description: {
+				diagonal: "6.4",
+				camera: "14",
+				processor: "DD32"
+			},
+			imgs: ['Huawei/huaweiM9/front.webp', 'Huawei/huaweiM9/back.webp']
+		},
+		{
+			title: 'Huawei Nova2',
+			price: 50000,
+			rest: 30,
+			description: {
+				diagonal: "5",
+				camera: "12",
+				processor: "DD31"
+			},
+			imgs: ['Huawei/huaweiNova2/front.webp', 'Huawei/huaweiNova2/back.webp']
+		}
+	]
 
-// this was added
-/* let phones = [
-	{
-		title: 'Iphone 8',
-		price: 40000,
-		rest: 20,
-		description: {
-			diagonal: "4.7",
-			camera: "12",
-			processor: "A11"
-		}
-	},
-	{
-		title: 'Iphone X',
-		price: 50000,
-		rest: 20,
-		description: {
-			diagonal: "5.8",
-			camera: "12",
-			processor: "A11"
-		}
-	}, {
-		title: 'Iphone 7',
-		price: 30000,
-		rest: 30,
-		description: {
-			diagonal: "4.5",
-			camera: "10",
-			processor: "A10"
-		}
-	}, {
-		title: 'Iphone 7 Plus',
-		price: 35000,
-		rest: 10,
-		description: {
-			diagonal: "4.7",
-			camera: "12",
-			processor: "A10"
-		}
-	}, {
-		title: 'Iphone 8 Plus',
-		price: 45000,
-		rest: 10,
-		description: {
-			diagonal: "5",
-			camera: "11",
-			processor: "A11"
-		}
-	}, {
-		title: 'Iphone 6',
-		price: 20000,
-		rest: 5,
-		description: {
-			diagonal: "4.3",
-			camera: "8",
-			processor: "A9"
-		}
-	}, {
-		title: 'Iphone 8 Plus',
-		price: 40000,
-		rest: 8,
-		description: {
-			diagonal: "4.5",
-			camera: "10",
-			processor: "A9"
-		}
-	}, {
-		title: 'Iphone 6S',
-		price: 25000,
-		rest: 7,
-		description: {
-			diagonal: "4.4",
-			camera: "12",
-			processor: "A10"
-		}
-	},
-	{
-		title: 'Samsung Galaxy S10',
-		price: 60000,
-		rest: 30,
-		description: {
-			diagonal: "6.4",
-			camera: "16",
-			processor: "SD33"
-		}
-	},
-	{
-		title: 'Samsung Galaxy S9',
-		price: 50000,
-		rest: 30,
-		description: {
-			diagonal: "6.2",
-			camera: "14",
-			processor: "SD30"
-		}
-	},
-	{
-		title: 'Samsung Galaxy S8',
-		price: 40000,
-		rest: 30,
-		description: {
-			diagonal: "6",
-			camera: "12",
-			processor: "SD29"
-		}
-	},
-	{
-		title: 'Samsung Galaxy S8',
-		price: 35000,
-		rest: 30,
-		description: {
-			diagonal: "5.9",
-			camera: "12",
-			processor: "SD28"
-		}
-	},
-	{
-		title: 'Samsung Galaxy S7',
-		price: 30000,
-		rest: 30,
-		description: {
-			diagonal: "5.8",
-			camera: "10",
-			processor: "SD27"
-		}
-	},
-	{
-		title: 'Huawei M10',
-		price: 50000,
-		rest: 30,
-		description: {
-			diagonal: "6.4",
-			camera: "16",
-			processor: "DD33"
-		}
-	},
-	{
-		title: 'Huawei M9',
-		price: 50000,
-		rest: 30,
-		description: {
-			diagonal: "6.4",
-			camera: "14",
-			processor: "DD32"
-		}
-	},
-	{
-		title: 'Huawei M8',
-		price: 50000,
-		rest: 30,
-		description: {
-			diagonal: "6.2",
-			camera: "12",
-			processor: "DD31"
-		}
-	}
-]
-
-phones.forEach(phone => {
-	firebase.firestore().collection("phones").add(phone)
-		.then(function (docRef) {
-			console.log("docRef: ", docRef)
-			console.log("Document written with ID: ", docRef.id)
-		})
-		.catch(function (error) {
-			console.error("Error adding document: ", error);
-		});
-}) */
+	phones.forEach(phone => {
+		firebase.firestore().collection("phones").add(phone)
+			.then(function (docRef) {
+				console.log("docRef: ", docRef)
+				console.log("Document written with ID: ", docRef.id)
+			})
+			.catch(function (error) {
+				console.error("Error adding document: ", error);
+			});
+	})
+}
 
 /* let televisions = [
 	{

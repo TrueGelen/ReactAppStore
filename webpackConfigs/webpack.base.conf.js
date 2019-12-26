@@ -75,7 +75,7 @@ module.exports = {
         name: '[name].[ext]'
       }
     }, {
-      test: /\.(png|jpg|gif|svg)$/,
+      test: /\.(png|jpg|gif|svg|webp)$/,
       loader: 'file-loader',
       options: {
         name: '[name].[ext]'
@@ -90,7 +90,7 @@ module.exports = {
             sourceMap: true,
             importLoaders: 1,
             modules: {
-              localIdentName: '[local]__[sha1:hash:hex:7]'
+              localIdentName: '[name]__[local]_[sha1:hash:hex:5]'
             }
           }
         }, {
@@ -150,8 +150,8 @@ module.exports = {
       inject: true
     }),
     new CopyPlugin([
-      { from: `${PATHS.src}/${PATHS.static}img`, to: `${PATHS.static}img` },
-      { from: `${PATHS.src}/${PATHS.static}fonts`, to: `${PATHS.static}fonts` },
+      { from: `${PATHS.src}/imgs`, to: `${PATHS.static}/imgs` },
+      { from: `${PATHS.src}/fonts`, to: `${PATHS.static}/fonts` },
       { from: `${PATHS.src}/static`, to: '' },
     ])
   ]

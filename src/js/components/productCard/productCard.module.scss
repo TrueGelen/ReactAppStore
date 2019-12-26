@@ -1,0 +1,20 @@
+@import '../../../scss/smart-grid.sass';
+
+.productCard{
+	background-color: white;
+	display: inline-block;
+	text-align: center;	
+	padding: 10px;
+	margin-bottom: 20px;
+	border: rgba(156, 95, 214, 0.418) solid 1px;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px 0px rgba(124, 81, 81, 0.61);
+
+	@include col();
+	@include size(3);
+
+	&:hover{
+		border: rgba(134, 39, 223, 0.575) solid 1px;
+	}
+}

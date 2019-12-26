@@ -7,13 +7,15 @@ import TabletsStore from './tablets'
 import * as phones from '../serverApiModel/phones'
 import * as tablets from '../serverApiModel/tablets'
 import * as televisions from '../serverApiModel/televisions'
+import * as apiCart from '../serverApiModel/cart'
 
 class RootStore {
 	constructor() {
 		this.api = {
 			phones,
 			tablets,
-			televisions
+			televisions,
+			apiCart
 		}
 
 		this.cart = new cartStore(this)

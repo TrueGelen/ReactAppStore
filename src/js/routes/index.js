@@ -1,10 +1,17 @@
-import phones from '../containers/phones'
-import tvs from '../containers/televisions'
-import tablets from '../containers/tablets'
-import homePage from '../containers/homePage'
-import order from '../containers/order'
+import phones from '../pages/phones'
+import tvs from '../pages/televisions'
+import tablets from '../pages/tablets'
+import homePage from '../pages/homePage'
+import order from '../pages/order'
+import cart from '../pages/cart'
 
 let routes = [
+	{
+		name: 'cart',
+		url: '/cart',
+		container: cart,
+		exact: true
+	},
 	{
 		name: 'home',
 		url: '/',

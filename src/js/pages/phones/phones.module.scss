@@ -1,0 +1,29 @@
+@import '../../../scss/smart-grid.sass';
+
+.title{
+font-family: sans-serif;
+}
+
+.productsWrapper{
+	width: 82%;
+	@include row-flex();
+}
+
+.imgInCard{
+	width: 60%;
+}
+
+.filtersWrapper{	
+	background-color: white;
+	border-radius: 20px;
+	width: 18%;
+}
+
+.filter{
+}
+
+.pagePhoneWrapper{
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}

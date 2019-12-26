@@ -5,12 +5,20 @@ import { routes, routesMap } from '../routes'
 import styles from './app.module.scss'
 import mainStyles from '../../scss/main.module.scss'
 
+//temporary imports
+import LazyInp from '../components/inputs/lazyInput/lazyInput'
+import ItemsCounter from '../components/inputs/itemsCounter'
+
 class App extends React.Component {
 
 	render() {
+
+		//?
 		this.phonesStore = this.props.rootStore.phones
 		this.televisionsStore = this.props.rootStore.televisions
 		this.tabletsStore = this.props.rootStore.tablets
+
+
 		//console.log(routesMap)
 		let routsContainers = routes.map((route) => {
 			//console.log(route)
@@ -22,37 +30,47 @@ class App extends React.Component {
 		})
 		/* console.log(routsContainers)
 		console.log("STYLES========")
-		console.log(styles) */
+		console.log(styles)*/
 
 		return (
 			<Router>
 				<>
-					<header>
-						<div className={mainStyles.container}>
-							<div className={`${styles.headerWrapper} ${mainStyles.noselect}`}>
-								<h1 className={styles.logo}>
+					<header className={styles.header}>
+						<div className={`${mainStyles.container} ${styles.container_mod}`}>
+							<div className={`${styles.headerWrapper} ${mainStyles.noselect} ${mainStyles.borderRadiusBlock}`}>
+								<div className={styles.logo}>
 									<Link to={routesMap.home}>
 										<span className={styles.logoParody}>Gparody</span>Shop
 								</Link>
-								</h1>
+								</div>
 								<menu>
 									<ul>
-										{/* <li><Link to={routesMap.home}>Главная</Link></li> */}
 										<li><Link to={routesMap.televisions} onClick={this.televisionsStore.getTelevisions}>Телевизоры</Link></li>
-										<li><Link to={routesMap.phones} onClick={this.phonesStore.getPhones}>Телефоны</Link></li>
+										<li><Link to={routesMap.phones} onClick={() => { }}>Телефоны</Link></li>
 										<li><Link to={routesMap.tablets} onClick={this.tabletsStore.getTablets}>Планшеты</Link></li>
 									</ul>
 								</menu>
 								<div className={styles.cart}>
-									cart
+									<Link to={routesMap.cart} onClick={() => { }}>Cart</Link>
 								</div>
 							</div>
 						</div>
 					</header>
-					<main>
+
+
+
+					<main className={styles.content}>
 						<div className={mainStyles.container}>
 							{routsContainers}
 						</div>
+
+						{/* test ItemsCounter */}
+						{/* <div className={styles.divForTest}>
+							<ItemsCounter
+								currentCount={1}
+								max={10}
+							/>
+						</div> */}
 					</main>
 				</>
 			</Router >
@@ -61,16 +79,3 @@ class App extends React.Component {
 }
 
 export default withStore(App)
-
-{/* <menu>
-					<ul>
-						<li> <Link to={routesMap.tv}>Телевизоры</Link></li>
-						<li><Link to={routesMap.phones}>Телефоны</Link></li>
-						<li><Link to={routesMap.tablets}>Планшеты</Link></li>
-					</ul>
-				</menu>
-				<div>
-					<Switch>
-						{routsContainers}
-					</Switch>
-				</div> */}

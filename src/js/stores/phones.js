@@ -6,8 +6,8 @@ export default class {
 		this.api = rootStore.api.phones
 
 		//for gitHub page
-		//TrueGelen/ReactAppStore/tree/master/dist/assets/imgs/phones/
-		this.baseUrlImgs = 'TrueGelen/ReactAppStore/tree/master/dist/assets/imgs/phones/'
+		//ReactAppStore/dist/assets/imgs/phones/
+		this.baseUrlImgs = 'ReactAppStore/dist/assets/imgs/phones/'
 		//assets/imgs/phones/
 	}
 

@@ -2,19 +2,19 @@
 
 .productCard{
 	background-color: white;
-	display: inline-block;
-	text-align: center;	
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 	padding: 10px;
-	margin-bottom: 20px;
 	border: rgba(156, 95, 214, 0.418) solid 1px;
-	cursor: pointer;
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px 0px rgba(124, 81, 81, 0.61);
-
-	@include col();
-	@include size(3);
+	transition: box-shadow .2s, border .2s;	
 
 	&:hover{
 		border: rgba(134, 39, 223, 0.575) solid 1px;
+		box-shadow: 0px 0px 10px 0px rgba(134, 39, 223, 0.575);
 	}
 }

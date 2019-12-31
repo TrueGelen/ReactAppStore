@@ -6,19 +6,36 @@ export default class {
 	constructor(rootStore) {
 
 		this.api = rootStore.api.apiCart
+		this.localStorage = rootStore.localStorage
 	}
 
-	/* inCart(id) {
-		this.products.some(product => {
-			return product.id === id
+	@action getCartFromLocalStorage() {
+		Object.keys(this.localStorage).forEach(id => {
+			id !== 'loglevel:webpack-dev-server' ? this.products[id] = { amount: parseInt(this.localStorage.getItem(id)) } : false
 		})
-	} */
+	}
+
+	@computed get totalPositionsInCart() {
+		return Object.keys(this.products).length
+	}
+
+	inCart(id) {
+		return id in this.products
+	}
 
 	@action async addToCart(id) {
-		if (!(id in this.products)) {
-			// const product = await this.api.getProductById(id)
-			this.products[id] = { amount: 0 }
-			console.log('product added to cart')
+		if (!this.inCart(id)) {
+			this.localStorage.setItem(id, 1)
+			this.products[id] = { amount: 1 }
 		}
+		console.log('product added to cart')
+	}
+
+	@action async removeFromCart(id) {
+		if (this.inCart(id)) {
+			this.localStorage.removeItem(id)
+			delete this.products[id]
+		}
+		console.log('product remove from cart')
 	}
 }

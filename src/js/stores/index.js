@@ -18,6 +18,7 @@ class RootStore {
 			apiCart
 		}
 
+		this.localStorage = localStorage
 		this.cart = new cartStore(this)
 		this.phones = new phonesStore(this)
 		this.order = new orderStore(this)

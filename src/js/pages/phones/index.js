@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import withStore from '../../hocs/withStore'
 import ProductCard from '../../components/productCard'
+import BtnAddToCart from '../../components/buttons/btnAddToCart'
 
 import moduleStyles from './phones.module.scss'
 import mainStyles from '../../../scss/main.module.scss'
@@ -25,10 +26,22 @@ function phones(props) {
 
 	const products = phones.map(phone => {
 		// console.log(phoneStore.urlToImg(phone.data().imgs[0]))
-		return <ProductCard key={phone.id} onClick={() => { cart.addToCart(phone.id) }}>
-			<img src={phoneStore.urlToImg(phone.data().imgs[0])}
-				className={moduleStyles.imgInCard}></img>
-			<h2>{phone.data().title}</h2>
+		return <ProductCard
+			key={phone.id}
+			addClassName={moduleStyles.cardStyles}>
+			<img
+				src={phoneStore.urlToImg(phone.data().imgs[0])}
+				className={`${moduleStyles.imgInCard} ${moduleStyles.insideCardMargin}`}>
+			</img>
+			<h2
+				className={`${moduleStyles.title} ${moduleStyles.insideCardMargin}`}>
+				{phone.data().title}
+			</h2>
+			<BtnAddToCart
+				inCart={cart.inCart(phone.id)}
+				addClassName={moduleStyles.insideCardMargin}
+				onAdd={() => { cart.addToCart(phone.id) }}
+				onRemove={() => { cart.removeFromCart(phone.id) }} />
 		</ProductCard>
 	})
 

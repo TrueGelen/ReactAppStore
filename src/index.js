@@ -11,4 +11,8 @@ import rootStore from './js/stores'
 
 //console.log(scss)
 
+//get cart from local storage and then emb app to DOM
+const cartStore = rootStore.cart
+cartStore.getCartFromLocalStorage()
+
 ReactDom.render(<Provider rootStore={rootStore}><App></App></Provider>, document.querySelector('#app'))

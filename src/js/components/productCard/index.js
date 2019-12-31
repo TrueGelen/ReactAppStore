@@ -2,12 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import moduleStyles from './productCard.module.scss'
-import MainStyles from '../../../scss/main.module.scss'
 
-export default function ProductCard({ children, className, onClick, ...otherProps }) {
+export default function ProductCard({ children, className, addClassName, onClick, ...otherProps }) {
+
 	const classCard = className ? className : moduleStyles.productCard
+
 	return (
-		<div className={`${classCard}`} onClick={onClick}>
+		<div {...otherProps} className={`${classCard} ${addClassName}`} onClick={onClick}>
 			{children}
 		</div>
 	)
@@ -16,11 +17,13 @@ export default function ProductCard({ children, className, onClick, ...otherProp
 ProductCard.defaultProps = {
 	children: null,
 	className: undefined,
-	onClick: () => { }
+	onClick: () => { },
+	addClassName: ''
 }
 
 ProductCard.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
+	addClassName: PropTypes.string
 }

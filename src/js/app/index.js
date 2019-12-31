@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import withStore from '../hocs/withStore'
 import { routes, routesMap } from '../routes'
-import styles from './app.module.scss'
+import moduleStyles from './app.module.scss'
 import mainStyles from '../../scss/main.module.scss'
 
 //temporary imports
@@ -13,10 +13,13 @@ class App extends React.Component {
 
 	render() {
 
-		//?
+		//to del later
 		this.phonesStore = this.props.rootStore.phones
 		this.televisionsStore = this.props.rootStore.televisions
 		this.tabletsStore = this.props.rootStore.tablets
+		this.cartStore = this.props.rootStore.cart
+
+		// console.log(this.cartStore.totalPositionsInCart)
 
 
 		//console.log(routesMap)
@@ -35,23 +38,24 @@ class App extends React.Component {
 		return (
 			<Router>
 				<>
-					<header className={styles.header}>
-						<div className={`${mainStyles.container} ${styles.container_mod}`}>
-							<div className={`${styles.headerWrapper} ${mainStyles.noselect} ${mainStyles.borderRadiusBlock}`}>
-								<div className={styles.logo}>
+					<header className={moduleStyles.header}>
+						<div className={`${mainStyles.container} ${moduleStyles.container_mod}`}>
+							<div className={`${moduleStyles.headerWrapper} ${mainStyles.noselect} ${mainStyles.borderRadiusBlock}`}>
+								<div className={moduleStyles.logo}>
 									<Link to={routesMap.home}>
-										<span className={styles.logoParody}>Gparody</span>Shop
+										<span className={moduleStyles.logoParody}>Gparody</span>Shop
 								</Link>
 								</div>
 								<menu>
 									<ul>
 										<li><Link to={routesMap.televisions} onClick={this.televisionsStore.getTelevisions}>Телевизоры</Link></li>
-										<li><Link to={routesMap.phones} onClick={() => { }}>Телефоны</Link></li>
+										<li><Link to={routesMap.phones}>Телефоны</Link></li>
 										<li><Link to={routesMap.tablets} onClick={this.tabletsStore.getTablets}>Планшеты</Link></li>
 									</ul>
 								</menu>
-								<div className={styles.cart}>
-									<Link to={routesMap.cart} onClick={() => { }}>Cart</Link>
+								<div className={moduleStyles.cart}>
+									<Link to={routesMap.cart}>Cart</Link>
+									<div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div>
 								</div>
 							</div>
 						</div>
@@ -59,13 +63,13 @@ class App extends React.Component {
 
 
 
-					<main className={styles.content}>
+					<main className={moduleStyles.content}>
 						<div className={mainStyles.container}>
 							{routsContainers}
 						</div>
 
 						{/* test ItemsCounter */}
-						{/* <div className={styles.divForTest}>
+						{/* <div className={moduleStyles.divForTest}>
 							<ItemsCounter
 								currentCount={1}
 								max={10}

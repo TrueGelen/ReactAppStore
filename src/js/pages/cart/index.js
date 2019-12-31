@@ -11,10 +11,12 @@ function cart(props) {
 	const products = cartStore.products
 
 
+	console.log(products)
 	for (let key in products) {
 		console.log(key, '========')
 		for (let k in products[key]) {
 			console.log(k, products[key][k])
+			// console.log(k, products[key][k])
 		}
 	}
 

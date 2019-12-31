@@ -1,7 +1,26 @@
 @import '../../../scss/smart-grid.sass';
 
+.cardStyles{
+	cursor: pointer;
+	margin-bottom: 20px;
+
+	@include col();
+	@include size(3);
+}
+
+.insideCardMargin{
+	margin: 5px 0;
+}
+
+.pagePhoneWrapper{
+	margin-top: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
 .title{
-font-family: sans-serif;
+	font-family: sans-serif;
+	font-size: 20px;
 }
 
 .productsWrapper{
@@ -13,6 +32,8 @@ font-family: sans-serif;
 	width: 60%;
 }
 
+//--filters
+
 .filtersWrapper{	
 	background-color: white;
 	border-radius: 20px;
@@ -20,10 +41,5 @@ font-family: sans-serif;
 }
 
 .filter{
-}
 
-.pagePhoneWrapper{
-	margin-top: 20px;
-	display: flex;
-	justify-content: space-between;
 }

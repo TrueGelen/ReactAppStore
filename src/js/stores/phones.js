@@ -5,7 +5,10 @@ export default class {
 	constructor(rootStore) {
 		this.api = rootStore.api.phones
 
-		this.baseUrlImgs = 'assets/imgs/phones/'
+		//for gitHub page
+		//TrueGelen/ReactAppStore/tree/master/dist/assets/imgs/phones/
+		this.baseUrlImgs = 'TrueGelen/ReactAppStore/tree/master/dist/assets/imgs/phones/'
+		//assets/imgs/phones/
 	}
 
 	@action getPhones = async () => this.phones = await this.api.getPhones()

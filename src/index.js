@@ -7,7 +7,7 @@ import App from './js/app'
 import rootStore from './js/stores'
 
 //temporary import for adding items to database
-//import './js/temporaryToAddData/addDataToFirebase'
+// import './js/temporaryToAddData/addDataToFirebase'
 
 //console.log(scss)
 
@@ -15,4 +15,7 @@ import rootStore from './js/stores'
 const cartStore = rootStore.cart
 cartStore.getCartFromLocalStorage()
 
-ReactDom.render(<Provider rootStore={rootStore}><App></App></Provider>, document.querySelector('#app'))
+ReactDom.render(
+  <Provider rootStore={rootStore}><App></App></Provider>,
+  document.querySelector('#app')
+)

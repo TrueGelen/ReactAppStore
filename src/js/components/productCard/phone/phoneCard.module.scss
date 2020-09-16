@@ -1,4 +1,4 @@
-@import '../../../scss/smart-grid.sass';
+@import '../../../../scss/smart-grid.sass';
 
 .productCard{
 	background-color: white;
@@ -16,5 +16,22 @@
 	&:hover{
 		border: rgba(134, 39, 223, 0.575) solid 1px;
 		box-shadow: 0px 0px 10px 0px rgba(134, 39, 223, 0.575);
-	}
+  }
+  
+  & > * {
+    margin: 5px 0;
+  }
+}
+
+.insideCardMargin{
+	// margin: 5px 0;
+}
+
+.title{
+	font-family: sans-serif;
+	font-size: 20px;
+}
+
+.imgInCard{
+	width: 60%;
 }

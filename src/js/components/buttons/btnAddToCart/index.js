@@ -31,18 +31,18 @@ export default function BtnAddToCart({ className, addClassName, onAdd, onRemove,
 
 BtnAddToCart.defaultProps = {
 	children: null,
-	className: undefined,
+  className: undefined,
+  addClassName: '',
 	onAdd: () => { },
 	onRemove: () => { },
-	inCart: false,
-	addClassName: ''
+	inCart: false	
 }
 
 BtnAddToCart.propTypes = {
 	children: PropTypes.node,
-	className: PropTypes.string,
+  className: PropTypes.string,
+  addClassName: PropTypes.string,
 	onAdd: PropTypes.func,
 	onRemove: PropTypes.func,
-	inCart: PropTypes.bool,
-	addClassName: PropTypes.string
+	inCart: PropTypes.bool	
 }

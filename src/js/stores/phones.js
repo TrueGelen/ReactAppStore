@@ -1,19 +1,17 @@
 import { observable, action, computed } from "mobx"
 
 export default class {
-	@observable phones = []
-	constructor(rootStore) {
-		this.api = rootStore.api.phones
+  @observable phones = []
 
-		//for gitHub page
-		//ReactAppStore/dist/assets/imgs/phones/
-		this.baseUrlImgs = 'ReactAppStore/dist/assets/imgs/phones/'
-		//assets/imgs/phones/
-	}
+  constructor(rootStore) {
+    this.api = rootStore.api.phones
 
-	@action getPhones = async () => this.phones = await this.api.getPhones()
+    this.baseUrlImgs = rootStore.baseUrlImgs.phones
+  }
 
-	urlToImg = (url) => `${this.baseUrlImgs}${url}`
+  @action getPhones = async () => this.phones = await this.api.getPhones()
+
+  urlToImg = (url) => `${this.baseUrlImgs}${url}`
 	/* @action getPhones = async () => {
 		this.phones = ['one', 'two', 'three']
 	} */

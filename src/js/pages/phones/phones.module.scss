@@ -1,35 +1,25 @@
 @import '../../../scss/smart-grid.sass';
 
+
+//styles for modify component
 .cardStyles{
-	cursor: pointer;
+  cursor: pointer;
 	margin-bottom: 20px;
 
 	@include col();
-	@include size(3);
+	@include size(4);
 }
 
-.insideCardMargin{
-	margin: 5px 0;
-}
-
+//page styles
 .pagePhoneWrapper{
 	margin-top: 20px;
 	display: flex;
 	justify-content: space-between;
 }
 
-.title{
-	font-family: sans-serif;
-	font-size: 20px;
-}
-
 .productsWrapper{
 	width: 82%;
 	@include row-flex();
-}
-
-.imgInCard{
-	width: 60%;
 }
 
 //--filters

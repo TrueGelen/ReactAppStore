@@ -1,0 +1,46 @@
+@import '../../../scss/smart-grid.sass';
+
+
+//styles for modify component
+.cardStyles{
+  cursor: pointer;
+  height: 300px;
+}
+
+.button{
+  
+}
+
+//page styles
+.pagePhoneWrapper{	
+	display: flex;
+  justify-content: space-between;
+  
+  margin-top: 20px;
+  // margin-top: 1vw;
+}
+
+.productsWrapper{
+  // border: 1px solid red;
+	width: 80%;
+  @include row-flex();
+
+  margin: -5px 0;
+}
+
+.title{
+  font-family: sans-serif;
+  font-size: 35px;
+}
+
+//--filters
+
+.filtersWrapper{	
+	background-color: white;
+	border-radius: 5px;
+	width: 18%;
+}
+
+.filter{
+
+}

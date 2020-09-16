@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, Link, NavLink } from 'react-router-dom'
 import withStore from '../hocs/withStore'
 import { routes, routesMap } from '../routes'
 import moduleStyles from './app.module.scss'
@@ -11,75 +11,81 @@ import ItemsCounter from '../components/inputs/itemsCounter'
 
 class App extends React.Component {
 
-	render() {
+  render() {
 
-		//to del later
-		this.phonesStore = this.props.rootStore.phones
-		this.televisionsStore = this.props.rootStore.televisions
-		this.tabletsStore = this.props.rootStore.tablets
-		this.cartStore = this.props.rootStore.cart
+    //to del later
+    this.phonesStore = this.props.rootStore.phones
+    this.televisionsStore = this.props.rootStore.televisions
+    this.tabletsStore = this.props.rootStore.tablets
+    this.cartStore = this.props.rootStore.cart
 
-		// console.log(this.cartStore.totalPositionsInCart)
+    // console.log(this.cartStore.totalPositionsInCart)
 
 
-		//console.log(routesMap)
-		let routsContainers = routes.map((route) => {
-			//console.log(route)
-			return <Route path={route.url}
-				component={route.container}
-				exact={route.exact}
-				key={route.url}
-			/>
-		})
+    //console.log(routesMap)
+    let routsContainers = routes.map((route) => {
+      //console.log(route)
+      return <Route path={route.url}
+        component={route.container}
+        exact={route.exact}
+        key={route.url}
+      />
+    })
 		/* console.log(routsContainers)
 		console.log("STYLES========")
 		console.log(styles)*/
 
-		return (
-			<Router>
-				<>
-					<header className={moduleStyles.header}>
-						<div className={`${mainStyles.container} ${moduleStyles.container_mod}`}>
-							<div className={`${moduleStyles.headerWrapper} ${mainStyles.noselect} ${mainStyles.borderRadiusBlock}`}>
-								<div className={moduleStyles.logo}>
-									<Link to={routesMap.home}>
-										<span className={moduleStyles.logoParody}>Gparody</span>Shop
+    return (
+      <Router>
+        <>
+          <header className={moduleStyles.header}>
+            <div className={`${mainStyles.container} ${moduleStyles.container_mod}`}>
+              <div className={`${moduleStyles.headerWrapper} ${mainStyles.noselect} ${mainStyles.borderRadiusBlock}`}>
+                <div className={moduleStyles.logo}>
+                  <Link to={routesMap.home}>
+                    <span className={moduleStyles.logoParody}>Gparody</span>Shop
 								</Link>
-								</div>
-								<menu>
-									<ul>
-										<li><Link to={routesMap.televisions} onClick={this.televisionsStore.getTelevisions}>Телевизоры</Link></li>
-										<li><Link to={routesMap.phones}>Телефоны</Link></li>
-										<li><Link to={routesMap.tablets} onClick={this.tabletsStore.getTablets}>Планшеты</Link></li>
-									</ul>
-								</menu>
-								<div className={moduleStyles.cart}>
-									<Link to={routesMap.cart}>Cart</Link>
-									<div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div>
-								</div>
-							</div>
-						</div>
-					</header>
+                </div>
+                <menu className={moduleStyles.menu}>
+                  <ul>
+                    <NavLink
+                      to={routesMap.televisions}
+                      activeClassName={moduleStyles.activeLink}><li>Телевизоры</li></NavLink>
+                    <NavLink
+                      to={routesMap.phones}
+                      activeClassName={moduleStyles.activeLink}><li>Телефоны</li></NavLink>
+                    <NavLink
+                      to={routesMap.tablets}
+                      activeClassName={moduleStyles.activeLink}><li>Планшеты</li></NavLink>
+                  </ul>
+                </menu>
+                <div className={moduleStyles.cart}>
+                  <Link to={routesMap.cart}>Cart</Link>
+                  <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div>
+                </div>
+              </div>
+            </div>
+          </header>
 
 
 
-					<main className={moduleStyles.content}>
-						<div className={mainStyles.container}>
-							{routsContainers}
-						</div>
+          <main className={moduleStyles.content}>
+            <div className={mainStyles.container}>
+              {routsContainers}
+            </div>
 
-						{/* test ItemsCounter */}
-						{/* <div className={moduleStyles.divForTest}>
+            {/* test ItemsCounter */}
+            {/* <div className={moduleStyles.divForTest}>
 							<ItemsCounter
 								currentCount={1}
 								max={10}
 							/>
 						</div> */}
-					</main>
-				</>
-			</Router >
-		)
-	}
+          </main>
+        </>
+      </Router >
+    )
+  }
 }
 
 export default withStore(App)

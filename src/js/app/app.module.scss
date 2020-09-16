@@ -14,6 +14,8 @@
 }
 
 .headerWrapper{
+  // border: 1px solid black;
+  position: relative;  
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -24,25 +26,38 @@
 	}
 
 	menu{
+    // border: 1px solid red;
 		font-family: sans-serif;
-		flex-basis: 40%;
+    flex-basis: 40%;    
+    border-radius: 5px;
+    background-color: rgba(109, 109, 223, 0.8);
+
+    overflow: hidden;
 
 		ul{
-			width: 100%;
+      // border: 1px solid red;
+      width: 100%;
 			display: flex;
-			justify-content: space-between;			
+      justify-content: space-between;
+      
+      & > a {
+        transition: .2s;
 
-			li{
-				cursor: pointer;
-
-				a{
-					display: inline-block;
-					width: 100%;
-					height: 100%;
-				}
-			}
+        & > li{
+          cursor: pointer;
+          color: white;
+  
+          padding: 11px 22px;
+        }
+      }		
 		}
-	}
+  }
+  
+  .activeLink{
+    background-color: rgb(109, 109, 233);
+    box-shadow: inset 3px 3px 10px rgb(97, 97, 228),
+      inset -3px -3px 10px rgb(97, 97, 228);
+  }
 
 	.cart{
 		position: relative;
@@ -97,6 +112,5 @@
 	//line-height: 100px;
 	text-align: center;
 }
-
-
 //the end of TEST DIV-----------
+

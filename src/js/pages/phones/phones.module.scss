@@ -10,6 +10,10 @@
 	@include size(4);
 }
 
+.title{
+  font-family: sans-serif;
+}
+
 //page styles
 .pagePhoneWrapper{
 	margin-top: 20px;
@@ -26,7 +30,7 @@
 
 .filtersWrapper{	
 	background-color: white;
-	border-radius: 20px;
+	border-radius: 5px;
 	width: 18%;
 }
 

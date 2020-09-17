@@ -71,7 +71,9 @@ class App extends React.Component {
 
           <main className={moduleStyles.content}>
             <div className={mainStyles.container}>
-              {routsContainers}
+              <Switch>
+                {routsContainers}
+              </Switch>
             </div>
 
             {/* test ItemsCounter */}

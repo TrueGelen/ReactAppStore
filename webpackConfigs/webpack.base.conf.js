@@ -23,7 +23,7 @@ module.exports = {
   output: {
     filename: `${PATHS.static}js/[name].js`,
     path: PATHS.dist,
-    publicPath: '' //"/" что бы появилась косая на выходе в index.html
+    publicPath: '/' //"/" что бы появилась косая на выходе в index.html
   },
   resolve: {
     alias: {

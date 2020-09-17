@@ -1,5 +1,6 @@
 /* lib */
 import React, { useEffect } from 'react'
+// import { useHistory } from "react-router-dom";
 
 /* helpers */
 import withStore from '../../hocs/withStore'
@@ -14,8 +15,7 @@ import mainStyles from '../../../scss/main.module.scss'
 
 
 function tv(props) {
-  console.log('TV page')
-
+  // console.log('tv page')
   //television store
   const TVStore = props.rootStore.televisions
 
@@ -29,6 +29,12 @@ function tv(props) {
   const TVs = TVStore.televisions
   //cart store
   const cart = props.rootStore.cart
+
+  /* let history = useHistory();
+
+  const goTo = () => {
+
+  } */
 
   const products = TVs.map(TV => {
     return <LineCard
@@ -45,6 +51,7 @@ function tv(props) {
       }}
       description={TV.data().description}
       labels={TVStore.labels}
+      onClick={() => { props.history.push('/product/' + TV.id) }}
       button={
         <BtnAddToCart
           addClassName={moduleStyles.button}

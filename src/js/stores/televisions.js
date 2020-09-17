@@ -3,6 +3,8 @@ import { observable, action, computed } from "mobx"
 export default class {
   @observable televisions = []
 
+  @observable tv = null
+
   constructor(rootStore) {
     this.api = rootStore.api.televisions
 
@@ -17,6 +19,12 @@ export default class {
   }
 
   @action getTelevisions = async () => this.televisions = await this.api.getTelevisions()
+  @action getTv = async (id) => {
+    console.log("getTV in store", id)
+    this.tv = { id, ...await this.api.getTvById(id) }
+    console.log("some in store", some)
+    // return some
+  }
 
   urlToImg = (url) => `${this.baseUrlImgs}${url}`
 }

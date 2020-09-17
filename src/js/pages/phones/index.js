@@ -50,8 +50,6 @@ function phones(props) {
     </PhoneCard>
   })
 
-  console.log(products)
-
   //to do it's to del later
   const unrealChange = () => {
     console.log('unrealCh')

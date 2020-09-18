@@ -14,17 +14,13 @@ export default class {
       diagonal: 'Диагональ',
       hz: 'Частота обновления экрана (Гц)',
       screenResolution: 'Разрешение экрана',
-      wifi: 'Wi-Fi'
+      wifi: 'Wi-Fi',
+      about: 'О товаре'
     }
   }
 
   @action getTelevisions = async () => this.televisions = await this.api.getTelevisions()
-  @action getTv = async (id) => {
-    console.log("getTV in store", id)
-    this.tv = { id, ...await this.api.getTvById(id) }
-    console.log("some in store", some)
-    // return some
-  }
+  @action getTv = async (id) => this.tv = { id, ...await this.api.getTvById(id) }
 
   urlToImg = (url) => `${this.baseUrlImgs}${url}`
 }

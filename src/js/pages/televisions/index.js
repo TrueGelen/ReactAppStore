@@ -8,6 +8,7 @@ import withStore from '../../hocs/withStore'
 /* components */
 import LineCard from '../../components/productCard/lineCard'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
+import Counter from '../../components/inputs/minmax'
 
 /* styles */
 import moduleStyles from './tv.module.scss'
@@ -36,7 +37,10 @@ function tv(props) {
 
   } */
 
+  // console.log(cart.products["1uy7ePmoJU1wwdxZSIRE"].amount)
+
   const products = TVs.map(TV => {
+    // console.log(cart.products[TV.id].amount)
     return <LineCard
       key={TV.id}
       className={moduleStyles.cardStyles}
@@ -59,6 +63,11 @@ function tv(props) {
           onAdd={() => { cart.addToCart(TV.id) }}
           onRemove={() => { cart.removeFromCart(TV.id) }} />
       }
+      counter={<Counter
+        max={TV.data().rest}
+        cnt={cart.products[TV.id] ? cart.products[TV.id].amount : 0}
+        onChange={(cnt) => { cart.changeAmount(TV.id, cnt) }}
+      />}
     >
     </LineCard>
   })

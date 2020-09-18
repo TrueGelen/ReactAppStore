@@ -19,18 +19,18 @@ class RootStore {
     }
 
     //dev base url
-    /* this.baseUrlImgs = {
-      phones: 'assets/imgs/phones/',
-      televisions: 'assets/imgs/televisions/',
-      tablets: 'assets/imgs/tablets/'
-    } */
+    this.baseUrlImgs = {
+      phones: '/assets/imgs/phones/',
+      televisions: '/assets/imgs/televisions/',
+      tablets: '/assets/imgs/tablets/'
+    }
 
     //dist base url. for gitHub page
-    this.baseUrlImgs = {
+    /* this.baseUrlImgs = {
       phones: 'ReactAppStore/dist/assets/imgs/phones/',
       televisions: 'ReactAppStore/dist/assets/imgs/televisions/',
       tablets: 'ReactAppStore/dist/assets/imgs/tablets/'
-    }
+    } */
 
     this.localStorage = localStorage
     this.cart = new cartStore(this)

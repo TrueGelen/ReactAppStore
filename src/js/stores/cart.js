@@ -29,6 +29,14 @@ export default class {
     return Object.keys(this.products).length
   }
 
+  @computed get totalProductsInCart() {
+    let total = 0
+    for (let key in this.products) {
+      total += Number(this.products[key].amount)
+    }
+    return total
+  }
+
   @computed get total() {
     return Object.keys(this.products).reduce((total, id) => {
       return total + this.products[id].price * this.products[id].amount
@@ -53,5 +61,12 @@ export default class {
       delete this.products[id]
     }
     console.log('product remove from cart')
+  }
+
+  @action async changeAmount(id, amount) {
+    if (this.inCart(id)) {
+      this.localStorage.setItem(id, amount)
+      this.products[id] = { amount }
+    }
   }
 }

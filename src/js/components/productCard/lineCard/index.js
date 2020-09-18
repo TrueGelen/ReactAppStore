@@ -15,17 +15,20 @@ export default function LineCard({
   description,
   button,
   labels,
+  counter,
   ...otherProps }) {
 
   let arrDescription = []
 
   for (let key in description) {
-    let p = <p key={Math.random()}>{labels[key]}: <span>{description[key]}</span></p>
-    arrDescription.push(p)
+    if (key !== 'about') {
+      let p = <p key={Math.random()}>{labels[key]}: <span>{description[key]}</span></p>
+      arrDescription.push(p)
+    }
   }
 
   return (
-    <div {...otherProps} className={`${moduleStyles.productCard} ${className}`} onClick={onClick}>
+    <div {...otherProps} className={`${moduleStyles.productCard} ${className}`}>
       <div className={moduleStyles.imgContainer}>
         {
           img ?
@@ -39,7 +42,8 @@ export default function LineCard({
 
       <div className={moduleStyles.descriptionBlock}>
         <h2
-          className={`${moduleStyles.title} ${title.styles}`}>
+          className={`${moduleStyles.title} ${title.styles}`}
+          onClick={onClick}>
           {title.text}
         </h2>
 
@@ -50,6 +54,7 @@ export default function LineCard({
 
       <div className={moduleStyles.priceBlock}>
         <p><span>цена:</span> {price.text} <span>₽</span></p>
+        {counter}
         {button}
       </div>
     </div>
@@ -77,7 +82,8 @@ LineCard.defaultProps = {
   },
   description: {},
   labels: {},
-  button: null
+  button: null,
+  counter: null
 }
 
 LineCard.propTypes = {
@@ -101,5 +107,6 @@ LineCard.propTypes = {
   }),
   labels: PropTypes.object,
   description: PropTypes.object,
-  button: PropTypes.node
+  button: PropTypes.node,
+  counter: PropTypes.node
 }

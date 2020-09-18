@@ -61,7 +61,8 @@ class App extends React.Component {
                 </menu>
                 <div className={moduleStyles.cart}>
                   <Link to={routesMap.cart}>Cart</Link>
-                  <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div>
+                  {/* <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div> */}
+                  <div className={moduleStyles.totalInCart}>{this.cartStore.totalProductsInCart}</div>
                 </div>
               </div>
             </div>

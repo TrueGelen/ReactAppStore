@@ -1,13 +1,12 @@
 @import '../../../scss/smart-grid.sass';
+@import '../../../scss/vars.scss';
 
 
 //styles for modify component
-.cardStyles{
-  // cursor: pointer;
-}
 
-.button{
-  
+.counter{
+  align-self: center;
+  transform: translateY(80%);
 }
 
 //page styles
@@ -35,8 +34,8 @@
 //--filters
 
 .filtersWrapper{	
-	background-color: white;
-	border-radius: 5px;
+	background-color: $lb;
+	border-radius: $br;
 	width: 18%;
 }
 

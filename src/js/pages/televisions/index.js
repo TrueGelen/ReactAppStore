@@ -4,6 +4,7 @@ import React, { useEffect } from 'react'
 
 /* helpers */
 import withStore from '../../hocs/withStore'
+import { urlBuilder } from '../../routes'
 
 /* components */
 import LineCard from '../../components/productCard/lineCard'
@@ -16,13 +17,12 @@ import mainStyles from '../../../scss/main.module.scss'
 
 
 function tv(props) {
-  // console.log('tv page')
+  console.log('tv page')
   //television store
   const TVStore = props.rootStore.televisions
 
   //get tvs from server
   useEffect(() => {
-    // console.log('useEffect TV page', TVStore)
     TVStore.getTelevisions()
   }, [])
 
@@ -31,19 +31,10 @@ function tv(props) {
   //cart store
   const cart = props.rootStore.cart
 
-  /* let history = useHistory();
-
-  const goTo = () => {
-
-  } */
-
-  // console.log(cart.products["1uy7ePmoJU1wwdxZSIRE"].amount)
-
   const products = TVs.map(TV => {
-    // console.log(cart.products[TV.id].amount)
     return <LineCard
       key={TV.id}
-      className={moduleStyles.cardStyles}
+      inCart={cart.inCart(TV.id)}
       img={{
         path: TVStore.urlToImg(TV.data().imgs[0])
       }}
@@ -55,7 +46,9 @@ function tv(props) {
       }}
       description={TV.data().description}
       labels={TVStore.labels}
-      onClick={() => { props.history.push('/product/' + TV.id) }}
+      // onClick={() => { props.history.push(`/product/` + TV.id) }}
+      // onClick={() => { props.history.push('/product/' + TV.id) }}
+      onClick={() => { props.history.push(urlBuilder('television', TV.id)) }}
       button={
         <BtnAddToCart
           addClassName={moduleStyles.button}
@@ -67,7 +60,8 @@ function tv(props) {
         max={TV.data().rest}
         cnt={cart.products[TV.id] ? cart.products[TV.id].amount : 0}
         onChange={(cnt) => { cart.changeAmount(TV.id, cnt) }}
-      />}
+        className={moduleStyles.counter} />
+      }
     >
     </LineCard>
   })

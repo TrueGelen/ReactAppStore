@@ -1,4 +1,5 @@
 @import '../../../../scss/smart-grid.sass';
+@import '../../../../scss/vars.scss';
 
 .productCard{
   width: 100%;
@@ -8,8 +9,8 @@
 	display: flex;
 	// justify-content: space-between;
 	align-items: center;
-	border-radius: 5px;
-	border: rgba(156, 95, 214, 0.418) solid 1px;
+	border-radius: $br;
+	// border: rgba(156, 95, 214, 0.418) solid 1px;
 	
   transition: box-shadow .2s, border .2s;
 
@@ -59,7 +60,7 @@
   height: 100%;
 
   & > *{
-    // margin: 20px;
+    margin: 0;
   }
 
   & > p {
@@ -87,10 +88,10 @@
   // font-size: 1.3vw;
   font-size: 25px;
   cursor: pointer;
-  color: rgba(30, 63, 209, 0.925);
+  color: $lk;
 
   &:hover{
-    color: blue;
+    color: $hlk;
   }
 }
 

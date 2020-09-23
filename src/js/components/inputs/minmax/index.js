@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 /* styles */
 import LazyInp from '../lazy';
-import moduleStyles from './styles.module.css';
+import moduleStyles from './styles.module.scss';
 
 export default class extends React.PureComponent {
   static defaultProps = {
@@ -49,11 +49,12 @@ export default class extends React.PureComponent {
   render() {
     console.log('minmax render');
     return (
-      <div>
+      <div className={this.props.className}>
         <button
-          className={moduleStyles.button}
+          className={this.props.min >= Number(this.props.cnt) ? `${moduleStyles.button} ${moduleStyles.minus} ${moduleStyles.disabled}` :
+            `${moduleStyles.button} ${moduleStyles.minus}`}
           onClick={this.decrease}
-        >-</button>
+        >&ndash;</button>
         <LazyInp
           nativeProps={{ type: 'text', className: moduleStyles.input }}
           value={this.props.cnt}
@@ -62,7 +63,8 @@ export default class extends React.PureComponent {
         />
         <button
           onClick={this.increase}
-          className={moduleStyles.button}
+          className={this.props.max <= Number(this.props.cnt) ? `${moduleStyles.button} ${moduleStyles.minus} ${moduleStyles.disabled}` :
+            `${moduleStyles.button} ${moduleStyles.minus}`}
         >+</button>
       </div>
     );

@@ -3,10 +3,12 @@ import React, { useEffect } from 'react'
 
 /* helpers */
 import withStore from '../../hocs/withStore'
+import { urlBuilder } from '../../routes'
 
 /* components */
 import LineCard from '../../components/productCard/lineCard'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
+import Counter from '../../components/inputs/minmax'
 
 /* styles */
 import moduleStyles from './tablet.module.scss'
@@ -32,7 +34,7 @@ function tablets(props) {
   const products = tablets.map(tablet => {
     return <LineCard
       key={tablet.id}
-      className={moduleStyles.cardStyles}
+      inCart={cart.inCart(tablet.id)}
       img={{
         path: tabletStore.urlToImg(tablet.data().imgs[0])
       }}
@@ -44,12 +46,20 @@ function tablets(props) {
       }}
       description={tablet.data().description}
       labels={tabletStore.labels}
+      onClick={() => { props.history.push(urlBuilder('tablet', tablet.id)) }}
       button={
         <BtnAddToCart
           addClassName={moduleStyles.button}
           inCart={cart.inCart(tablet.id)}
           onAdd={() => { cart.addToCart(tablet.id) }}
           onRemove={() => { cart.removeFromCart(tablet.id) }} />
+      }
+      counter={
+        <Counter
+          max={tablet.data().rest}
+          cnt={cart.products[tablet.id] ? cart.products[tablet.id].amount : 0}
+          onChange={(cnt) => { cart.changeAmount(tablet.id, cnt) }}
+          className={moduleStyles.counter} />
       }
     >
     </LineCard>

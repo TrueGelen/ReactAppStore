@@ -9,35 +9,40 @@ export default function PhoneCard({
   onClick,
   img,
   title,
+  price,
+  button,
   ...otherProps }) {
 
   return (
-    <div {...otherProps} className={`${moduleStyles.productCard} ${className}`} onClick={onClick}>
+    <div {...otherProps} className={`${moduleStyles.productCard} ${className}`}>
       {
-        img ?
-          <img
-            src={img.path}
-            className={`${moduleStyles.imgInCard} ${moduleStyles.insideCardMargin} ${img.styles}`}>
-          </img> :
-          false
+        img &&
+        <img
+          src={img.path}
+          className={`${moduleStyles.imgInCard} ${moduleStyles.insideCardMargin} ${img.styles}`}>
+        </img>
       }
 
       {
-        title ?
-          <h2
-            className={`${moduleStyles.title} ${moduleStyles.insideCardMargin} ${title.styles}`}>
-            {title.text}
-          </h2> :
-          false
+        title &&
+        <h2
+          className={`${moduleStyles.title} ${moduleStyles.insideCardMargin} ${title.styles}`}
+          onClick={onClick}>
+          {title.text}
+        </h2>
       }
-      {children}
+      <div className={moduleStyles.bottom}>
+        {button && button}
+        <p className={price.styles ? moduleStyles.price : `${moduleStyles.price} ${price.styles}`}>
+          {price.text && `${price.text} ₽`}
+        </p>
+      </div>
     </div>
   )
 }
 
 PhoneCard.defaultProps = {
-  children: null,
-  className: undefined,
+  className: '',
   onClick: () => { },
   img: {
     path: null,
@@ -46,16 +51,23 @@ PhoneCard.defaultProps = {
   title: {
     styles: null,
     text: null
+  },
+  price: {
+    styles: null,
+    text: null
   }
 }
 
 PhoneCard.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   onClick: PropTypes.func,
   img: PropTypes.shape({
     path: PropTypes.string,
     styles: PropTypes.string
+  }),
+  title: PropTypes.shape({
+    styles: PropTypes.string,
+    text: PropTypes.string
   }),
   title: PropTypes.shape({
     styles: PropTypes.string,

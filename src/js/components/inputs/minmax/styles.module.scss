@@ -1,0 +1,45 @@
+@import '../../../../scss/vars.scss';
+
+.input{
+  font-family: sans-serif;
+  width: 40px;
+  text-align: center;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.button{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid $border;
+  outline: none;
+  cursor: pointer;
+
+  &:active{
+    box-shadow: none;
+    border: 1px solid $border;
+  }
+  
+  &__minus{
+    
+  }
+
+  &__plus{
+
+  }
+}
+
+.disabled{
+  border: none;
+  box-shadow: none;
+  background-color: $inactive;
+  cursor: default;
+
+  &:active{
+    box-shadow: none;
+    border: 1px solid none;
+  }
+}

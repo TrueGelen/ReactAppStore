@@ -1,21 +1,20 @@
 @import '../../../../scss/smart-grid.sass';
+@import '../../../../scss/vars.scss';
 
 .productCard{
-	background-color: white;
+	background-color: $lb;
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	padding: 10px;
-	border: rgba(156, 95, 214, 0.418) solid 1px;
-	border-radius: 5px;
-	box-shadow: 0px 0px 5px 0px rgba(124, 81, 81, 0.61);
+	padding: 10px 15px;
+	border-radius: $br;
 	transition: box-shadow .2s, border .2s;	
 
 	&:hover{
-		border: rgba(134, 39, 223, 0.575) solid 1px;
-		box-shadow: 0px 0px 10px 0px rgba(134, 39, 223, 0.575);
+    box-shadow: 0px 0px 5px 0px rgba(132, 72, 189, 0.3);
+    transform: scale(1.01);
   }
   
   & > * {
@@ -26,12 +25,45 @@
 .insideCardMargin{
 	// margin: 5px 0;
 }
-
-.title{
-	font-family: sans-serif;
-	font-size: 20px;
+.imgInCard{
+	width: 50%;
 }
 
-.imgInCard{
-	width: 60%;
+.title{
+  display: inline-block;
+  font-family: sans-serif;
+  // font-size: 1.3vw;
+  font-size: 22px;
+  cursor: pointer;
+  color: $lk;
+
+  &:hover{
+    color: $hlk;
+  }
+}
+
+.bottom{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+}
+
+.price{
+  position: relative;
+  font-family: sans-serif;
+  font-size: 18px;
+
+  &::before{
+    position: absolute;
+    top: 50%;
+    left: -10px;
+    transform: translateY(-50%);
+    content: '';
+    display: block;
+    height: 120%;
+    width: 1px;
+    background-color: $border;
+  }
 }

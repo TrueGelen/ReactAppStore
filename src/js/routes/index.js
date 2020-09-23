@@ -39,8 +39,20 @@ let routes = [
     exact: true
   },
   {
-    name: 'product',
-    url: '/product/:id',
+    name: 'television',
+    url: '/televisions/:id',
+    container: ProductPage,
+    exact: true
+  },
+  {
+    name: 'phone',
+    url: '/phones/:id',
+    container: ProductPage,
+    exact: true
+  },
+  {
+    name: 'tablet',
+    url: '/tablets/:id',
     container: ProductPage,
     exact: true
   },
@@ -64,7 +76,7 @@ routes.forEach(item => {
   }
 })
 
-let urlBuilder = function (name, params) {
+/* let urlBuilder = function (name, params) {
   if (!routesMap.hasOwnProperty(name)) {
     return null;
   }
@@ -77,6 +89,15 @@ let urlBuilder = function (name, params) {
   }
 
   return url;
+} */
+
+let urlBuilder = function (name, id) {
+  if (!routesMap.hasOwnProperty(name)) {
+    console.error("page doesn't exist")
+    return null;
+  }
+
+  return `${routesMap[name].replace(":id", id)}`;
 }
 
 export { routes, routesMap, urlBuilder }

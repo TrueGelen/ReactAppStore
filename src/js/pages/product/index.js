@@ -6,8 +6,8 @@ import React, { useEffect } from 'react'
 import withStore from '../../hocs/withStore'
 
 // /* components */
-// import PhoneCard from '../../components/productCard/phone'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
+import Counter from '../../components/inputs/minmax'
 
 // /* styles */
 import moduleStyles from './styles.module.scss'
@@ -24,32 +24,42 @@ function ProductPage({ button, ...props }) {
 
   SwiperCore.use([Navigation, Pagination, Scrollbar]);
 
-  //television store
-  const TVStore = props.rootStore.televisions
+  const storeMap = {
+    televisions: "televisions",
+    phones: "phones",
+    tablets: "tablets"
+  }
+  const storeKey = props.match.path.substring(props.match.path.indexOf("/") + 1, props.match.path.lastIndexOf("/"))
+
+  //product store
+  const store = props.rootStore[storeMap[storeKey]]
+
   //cart store
   const cart = props.rootStore.cart
 
   const id = props.match.params.id
 
-  const tv = TVStore.tv !== null ? TVStore.tv : {}
+  const product = store.product !== null ? store.product : {}
 
-  //get tvs from server
+  // console.log(product.rest)
+
+  //get product from server
   useEffect(() => {
-    TVStore.getTv(id)
+    store.getProduct(id)
   }, [])
 
   let arrDescription = []
 
-  for (let key in tv.description) {
+  for (let key in product.description) {
     if (key !== 'about') {
-      let p = <p key={Math.random()}>{TVStore.labels[key]}: <span>{tv.description[key]}</span></p>
+      let p = <p key={Math.random()}> {store.labels[key]}: <span>{product.description[key]}</span></p>
       arrDescription.push(p)
     }
   }
 
   return (
     <>
-      <h1 className={`${mainStyles.borderRadiusBlock} ${moduleStyles.title}`}>{tv.title}</h1>
+      <h1 className={`${mainStyles.borderRadiusBlock} ${moduleStyles.title}`}>{product.title}</h1>
 
       <div className={moduleStyles.content}>
 
@@ -63,8 +73,12 @@ function ProductPage({ button, ...props }) {
         // onSlideChange={() => console.log('slide change')}
         // onSwiper={(swiper) => console.log(swiper)}
         >
-          <SwiperSlide className={moduleStyles.slide}><img src={'/assets/imgs/televisions/' + { ...tv.imgs }[0]}></img></SwiperSlide>
-          <SwiperSlide className={moduleStyles.slide}><img src={'/assets/imgs/televisions/' + { ...tv.imgs }[1]}></img></SwiperSlide>
+          <SwiperSlide className={moduleStyles.slide}>
+            <img src={`${store.baseUrlImgs}${{ ...product.imgs }[0]}`} />
+          </SwiperSlide>
+          <SwiperSlide className={moduleStyles.slide}>
+            <img src={`${store.baseUrlImgs}${{ ...product.imgs }[1]}`} />
+          </SwiperSlide>
         </Swiper>
 
         <div className={moduleStyles.description}>
@@ -72,17 +86,26 @@ function ProductPage({ button, ...props }) {
         </div>
 
         <div className={moduleStyles.priceBlock}>
-          <p><span>цена:</span> {tv.price} <span>₽</span></p>
+          <p><span>цена:</span> {product.price} <span>₽</span></p>
+
+          <Counter
+            className={`${moduleStyles.counter} ${!cart.inCart(product.id) && moduleStyles.counterHide}`}
+            max={product.rest}
+            cnt={cart.products[product.id] ? cart.products[product.id].amount : 0}
+            onChange={(cnt) => { cart.changeAmount(product.id, cnt) }} />
+
+
           <BtnAddToCart
             // addClassName={moduleStyles.button}
-            inCart={cart.inCart(tv.id)}
-            onAdd={() => { cart.addToCart(tv.id) }}
-            onRemove={() => { cart.removeFromCart(tv.id) }} />
+            inCart={cart.inCart(product.id)}
+            onAdd={() => { cart.addToCart(product.id) }}
+            onRemove={() => { cart.removeFromCart(product.id) }} />
         </div>
       </div>
 
-      <div className={`${moduleStyles.content} ${moduleStyles.about}`}>
-        <p>{tv.description ? tv.description.about : false}</p>
+      <div className={`${moduleStyles.about}`}>
+        <p className={moduleStyles.aboutTitle}>О товаре</p>
+        <p>{product.description && product.description.about}</p>
       </div>
     </>
   )

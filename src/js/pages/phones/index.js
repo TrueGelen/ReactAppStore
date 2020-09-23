@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 
 /* helpers */
 import withStore from '../../hocs/withStore'
+import { urlBuilder } from '../../routes'
 
 /* components */
 import PhoneCard from '../../components/productCard/phone'
@@ -15,14 +16,13 @@ import mainStyles from '../../../scss/main.module.scss'
 
 /* code */
 function phones(props) {
-  console.log('getPhones4 page')
+  console.log('phones page')
 
   //phones store
   const phoneStore = props.rootStore.phones
 
   //get phones from server
   useEffect(() => {
-    console.log('useEffect Phone page')
     phoneStore.getPhones()
   }, [])
 
@@ -32,7 +32,6 @@ function phones(props) {
   const cart = props.rootStore.cart
 
   const products = phones.map(phone => {
-    // console.log(phoneStore.urlToImg(phone.data().imgs[0]))
     return <PhoneCard
       key={phone.id}
       className={moduleStyles.cardStyles}
@@ -42,11 +41,15 @@ function phones(props) {
       title={{
         text: phone.data().title
       }}
-    >
-      <BtnAddToCart
+      price={{
+        text: phone.data().price.toString()
+      }}
+      onClick={() => { props.history.push(urlBuilder('phone', phone.id)) }}
+      button={<BtnAddToCart
         inCart={cart.inCart(phone.id)}
         onAdd={() => { cart.addToCart(phone.id) }}
-        onRemove={() => { cart.removeFromCart(phone.id) }} />
+        onRemove={() => { cart.removeFromCart(phone.id) }} />}
+    >
     </PhoneCard>
   })
 

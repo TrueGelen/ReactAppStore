@@ -16,6 +16,7 @@ export default function LineCard({
   button,
   labels,
   counter,
+  inCart,
   ...otherProps }) {
 
   let arrDescription = []
@@ -31,12 +32,11 @@ export default function LineCard({
     <div {...otherProps} className={`${moduleStyles.productCard} ${className}`}>
       <div className={moduleStyles.imgContainer}>
         {
-          img ?
-            <img
-              src={img.path}
-              className={`${moduleStyles.imgInCard} ${img.styles}`}>
-            </img> :
-            false
+          img &&
+          <img
+            src={img.path}
+            className={`${moduleStyles.imgInCard} ${img.styles}`}>
+          </img>
         }
       </div>
 
@@ -54,7 +54,7 @@ export default function LineCard({
 
       <div className={moduleStyles.priceBlock}>
         <p><span>цена:</span> {price.text} <span>₽</span></p>
-        {counter}
+        {inCart && counter}
         {button}
       </div>
     </div>
@@ -83,7 +83,8 @@ LineCard.defaultProps = {
   description: {},
   labels: {},
   button: null,
-  counter: null
+  counter: null,
+  inCart: true
 }
 
 LineCard.propTypes = {
@@ -108,5 +109,6 @@ LineCard.propTypes = {
   labels: PropTypes.object,
   description: PropTypes.object,
   button: PropTypes.node,
-  counter: PropTypes.node
+  counter: PropTypes.node,
+  inCart: PropTypes.bool
 }

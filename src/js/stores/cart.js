@@ -52,7 +52,6 @@ export default class {
       this.localStorage.setItem(id, 1)
       this.products[id] = { amount: 1 }
     }
-    console.log('product added to cart')
   }
 
   @action async removeFromCart(id) {
@@ -60,13 +59,12 @@ export default class {
       this.localStorage.removeItem(id)
       delete this.products[id]
     }
-    console.log('product remove from cart')
   }
 
   @action async changeAmount(id, amount) {
     if (this.inCart(id)) {
       this.localStorage.setItem(id, amount)
-      this.products[id] = { amount }
+      this.products[id] = { ...this.products[id], amount }
     }
   }
 }

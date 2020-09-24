@@ -9,6 +9,8 @@ export default function BtnAddToCart({
   onAdd,
   onRemove,
   inCart,
+  innerOnAdd,
+  innerOnRemove,
   ...otherProps }) {
 
   let btnClass = className ? className : moduleStyles
@@ -31,8 +33,8 @@ export default function BtnAddToCart({
 				${typeof btnClass === 'object' ? btnClass.inCart : btnClass}
 				${addClassName}`}
         onClick={remove}>
-        Delete from cart
-			</div>
+        {innerOnRemove}
+      </div>
       :
       <div {...otherProps}
         className={`${moduleStyles.noselect}
@@ -40,25 +42,27 @@ export default function BtnAddToCart({
 				${typeof btnClass === 'object' ? btnClass.nonInCart : btnClass}
 				${addClassName}`}
         onClick={add}>
-        Add to cart
-			</div>
+        {innerOnAdd}
+      </div>
   )
 }
 
 BtnAddToCart.defaultProps = {
-  children: null,
   className: undefined,
   addClassName: '',
   onAdd: () => { },
   onRemove: () => { },
-  inCart: false
+  inCart: false,
+  innerOnAdd: 'Add to cart',
+  innerOnRemove: 'Delete from cart'
 }
 
 BtnAddToCart.propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   addClassName: PropTypes.string,
   onAdd: PropTypes.func,
   onRemove: PropTypes.func,
-  inCart: PropTypes.bool
+  inCart: PropTypes.bool,
+  innerOnAdd: PropTypes.any,
+  innerOnRemove: PropTypes.any
 }

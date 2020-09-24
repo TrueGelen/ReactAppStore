@@ -1,64 +1,73 @@
+/* lib */
 import React, { useEffect } from 'react'
+
+/* components */
 import withStore from '../../hocs/withStore'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
+import Counter from '../../components/inputs/minmax'
 
+/* styles */
 import moduleStyles from './cart.module.scss'
-import mainStyles from '../../../scss/main.module.scss'
 
 function cart(props) {
-  console.log('cart page=========\n')
+  console.log('cart page')
 
   const cartStore = props.rootStore.cart
-  // const products = cartStore.products
-
-  // console.log(products)
-  // for (let key in products) {
-  //   console.log(key, '========')
-  //   for (let k in products[key]) {
-  //     console.log(k, products[key][k])
-  //     // console.log(k, products[key][k])
-  //   }
-  // }
-
   useEffect(() => {
-    console.log('useEffect from cart page')
-    // cartStore.getDetailedProducts()
     cartStore.getDetailedProducts()
-    console.log('=============after=============', cartStore.products)
   }, [])
 
   const products = Object.keys(cartStore.products).map(id => {
-    // console.log('id:', id)
-    // console.log('title:', cartStore.products[id].title)
-    // console.log('price:', cartStore.products[id].price)
-    // console.log('amount:', cartStore.products[id].amount)
-    // console.log('rest:', cartStore.products[id].rest)
-    // console.log('imgs:', cartStore.products[id].imgs)
-    return <div className={moduleStyles.product} key={id}>
-      {cartStore.products[id].imgs ?
-        <img className={moduleStyles.img} src={`assets/imgs/phones/${cartStore.products[id].imgs[0]}`} /> :
-        false}
-      <p className={moduleStyles.productName}>{cartStore.products[id].title}</p>
-      <p className={moduleStyles.price}>{cartStore.products[id].price}</p>
-      {/* it needs to be here a count component */}
-      <BtnAddToCart
-        inCart={cartStore.inCart(id)}
-        // addClassName={moduleStyles.insideCardMargin}
-        // onAdd={() => { cartStore.addToCart(phone.id) }}
-        onRemove={() => { cartStore.removeFromCart(id) }}>
-        X
-        </BtnAddToCart>
-    </div>
+    return <tr key={id}>
+      <td className={moduleStyles.td}>{cartStore.products[id].title}</td>
+      <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>{`${cartStore.products[id].price} ₽`}</td>
+      <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>{cartStore.products[id].amount}</td>
+      <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>
+        {`${cartStore.products[id].price * cartStore.products[id].amount} ₽`}
+      </td>
+      <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>
+        <Counter
+          max={cartStore.products[id].rest}
+          cnt={cartStore.products[id].amount}
+          onChange={(cnt) => { cartStore.changeAmount(id, cnt) }}
+        />
+      </td>
+      <td className={moduleStyles.td}>
+        <BtnAddToCart
+          inCart={cartStore.inCart(id)}
+          // addClassName={moduleStyles.insideCardMargin}
+          // onAdd={() => { cartStore.addToCart(phone.id) }}
+          onRemove={() => { cartStore.removeFromCart(id) }}
+          innerOnRemove={"X"}
+        />
+      </td>
+    </tr>
   })
 
   return (
-    <>
-      <p className={moduleStyles.total}>{cartStore.total}</p>
-      <h2 className={moduleStyles.title}>У вас в корзине:</h2>
-      <div className={moduleStyles.products}>
-        {products}
-      </div>
-    </>
+    <div className={moduleStyles.tableContainer}>
+      <table className={moduleStyles.table}>
+        <thead>
+          <tr>
+            <td className={moduleStyles.td}>Наименование</td>
+            <td className={moduleStyles.td}>Цена за шт.</td>
+            <td className={moduleStyles.td}>Кол-во</td>
+            <td className={moduleStyles.td}>Цена за все</td>
+            <td className={moduleStyles.td}>Изменить кол-во</td>
+            <td className={moduleStyles.td}>Удалить</td>
+          </tr>
+        </thead>
+        <tbody>
+          {products}
+        </tbody>
+        <tfoot>
+          <tr>
+            <td className={moduleStyles.td}>Общая цена:</td>
+            <td className={moduleStyles.td}>{`${cartStore.total} ₽`}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   )
 }
 

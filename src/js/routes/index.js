@@ -8,7 +8,7 @@ import ProductPage from '../pages/product'
 import Page404 from '../pages/page404'
 
 //for dev
-/* let routes = [
+let routes = [
   {
     name: 'cart',
     url: '/cart',
@@ -60,68 +60,6 @@ import Page404 from '../pages/page404'
   {
     name: 'order',
     url: '/order',
-    container: order,
-    exact: true
-  },
-  {
-    url: '**',
-    container: Page404,
-  }
-] */
-
-//for github page
-let routes = [
-  {
-    name: 'cart',
-    url: '/ReactAppStore/dist/cart',
-    container: cart,
-    exact: true
-  },
-  {
-    name: 'home',
-    url: '/ReactAppStore/dist/',
-    container: homePage,
-    exact: true
-  },
-  {
-    name: 'phones',
-    url: '/ReactAppStore/dist/phones',
-    container: phones,
-    exact: true
-  },
-  {
-    name: 'televisions',
-    url: '/ReactAppStore/dist/televisions',
-    container: tvs,
-    exact: true
-  },
-  {
-    name: 'tablets',
-    url: '/ReactAppStore/dist/tablets',
-    container: tablets,
-    exact: true
-  },
-  {
-    name: 'television',
-    url: '/ReactAppStore/dist/televisions/:id',
-    container: ProductPage,
-    exact: true
-  },
-  {
-    name: 'phone',
-    url: '/ReactAppStore/dist/phones/:id',
-    container: ProductPage,
-    exact: true
-  },
-  {
-    name: 'tablet',
-    url: '/ReactAppStore/dist/tablets/:id',
-    container: ProductPage,
-    exact: true
-  },
-  {
-    name: 'order',
-    url: '/ReactAppStore/dist/order',
     container: order,
     exact: true
   },

@@ -5,15 +5,12 @@ import moduleStyles from './index.module.scss'
 
 export default function BtnAddToCart({
   className,
-  addClassName,
   onAdd,
   onRemove,
   inCart,
   innerOnAdd,
   innerOnRemove,
   ...otherProps }) {
-
-  let btnClass = className ? className : moduleStyles
 
   const add = (e) => {
     e.stopPropagation()
@@ -29,18 +26,18 @@ export default function BtnAddToCart({
     inCart ?
       <div {...otherProps}
         className={`${moduleStyles.noselect}
-				${typeof btnClass === 'object' ? btnClass.mainStyles : btnClass}
-				${typeof btnClass === 'object' ? btnClass.inCart : btnClass}
-				${addClassName}`}
+				${moduleStyles.mainStyles}
+        ${moduleStyles.inCart}
+        ${className && className}`}
         onClick={remove}>
         {innerOnRemove}
       </div>
       :
       <div {...otherProps}
         className={`${moduleStyles.noselect}
-				${typeof btnClass === 'object' ? btnClass.mainStyles : btnClass}
-				${typeof btnClass === 'object' ? btnClass.nonInCart : btnClass}
-				${addClassName}`}
+				${moduleStyles.mainStyles}
+				${moduleStyles.nonInCart}
+				${className && className}`}
         onClick={add}>
         {innerOnAdd}
       </div>

@@ -7,6 +7,13 @@
   border: none;
   outline: none;
   font-size: 16px;
+
+  background-color: transparent;
+
+  @media screen and (min-width: 1921px){
+    width: 2vw;
+    font-size: .8vw;
+  }
 }
 
 .button{
@@ -17,6 +24,11 @@
   border: 1px solid $border;
   outline: none;
   cursor: pointer;
+
+  @media screen and (min-width: 1921px){
+    width: 1.5vw;
+    height: 1.5vw;
+  }
 
   &:active{
     box-shadow: none;

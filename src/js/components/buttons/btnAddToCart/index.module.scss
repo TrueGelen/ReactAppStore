@@ -25,11 +25,11 @@
 
   padding: 10px 20px;
 
-  /* height: 1.6vw;
-	line-height: 1.6vw;
-	border-radius: .2vw;
-  font-size: .8vw;
-  padding: 0 .5vw; */
+  @media screen and (min-width: 1921px){
+    border-radius: $br1921;
+    font-size: .7vw;
+    padding: .5vw 1vw;
+  }
 }
 
 .inCart{
@@ -38,7 +38,11 @@
 	text-transform: capitalize;
 
 	&:hover{
-		box-shadow: 0px 0px 3px 0px $wrong;
+    box-shadow: 0px 0px 3px 0px $wrong;
+    
+    @media screen and (min-width: 1921px){
+      box-shadow: 0px 0px .1 0px $wrong;
+    }
 	}
 
 	&:active{
@@ -54,7 +58,11 @@
 	text-transform: uppercase;
 
 	&:hover{
-		box-shadow: 0px 0px 3px 0px $borderSoft;
+    box-shadow: 0px 0px 3px 0px $borderSoft;
+    
+    @media screen and (min-width: 1921px){
+      box-shadow: 0px 0px .1 0px $borderSoft;
+    }
 	}
 
 	&:active{

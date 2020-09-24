@@ -45,9 +45,13 @@ class App extends React.Component {
                   </ul>
                 </menu>
                 <div className={moduleStyles.cart}>
-                  <Link to={routesMap.cart}>Cart</Link>
+                  <NavLink
+                    to={routesMap.cart}
+                    activeClassName={moduleStyles.activeLink}>
+                    Cart
+                  </NavLink>
                   {/* <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div> */}
-                  <div className={moduleStyles.totalInCart}>{this.cartStore.totalProductsInCart}</div>
+                  <div className={moduleStyles.totalInCart}><p>{this.cartStore.totalProductsInCart}</p></div>
                 </div>
               </div>
             </div>
@@ -56,7 +60,7 @@ class App extends React.Component {
 
 
           <main className={moduleStyles.content}>
-            <div className={mainStyles.container}>
+            <div className={`${mainStyles.container} ${moduleStyles.container_mod}`}>
               <Switch>
                 {routsContainers}
               </Switch>

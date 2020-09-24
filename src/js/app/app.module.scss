@@ -4,10 +4,19 @@
 .header{
 	display: flex;
 	align-items: center;
-	background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
-	height: 10vh;
-	//line-height: 10vh;	
-	box-shadow: black;
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+  padding: 20px 0;
+  box-shadow: black;
+
+  width: 100%;
+  
+  @media screen and(min-width: 1921px){
+    padding: 1vw 0;
+  }
+
+  @media screen and(max-width: 1200px){
+    padding: 2vw 0;
+  }
 }
 
 .container_mod{
@@ -15,16 +24,24 @@
 }
 
 .headerWrapper{
-  // border: 1px solid black;
   position: relative;  
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-  font-size: 2vh;
   
   padding: 10px 20px;
   border-radius: $br;
   background-color: $lb;
+
+  @media screen and(min-width: 1921px){
+    padding: .5vw 1vw;
+    border-radius: $br1921;
+  }
+
+  @media screen and(max-width: 1200px){
+    padding: 1vw 2vw;
+    border-radius: $br;
+  }
 
 	h1{
 		flex-basis: 40%;
@@ -33,11 +50,19 @@
 	menu{
     // border: 1px solid red;
 		font-family: sans-serif;
-    flex-basis: 40%;    
+    // flex-basis: 40%;    
     border-radius: $br;
     background-color: rgba(109, 109, 223, 0.8);
 
     overflow: hidden;
+
+    @media screen and(min-width: 1921px){
+      border-radius: $br1921;
+    }
+
+    @media screen and(max-width: 1200px){
+      border-radius: $br;
+    }
 
 		ul{
       // border: 1px solid red;
@@ -51,71 +76,169 @@
         & > li{
           cursor: pointer;
           color: white;
+          font-size: 19px;
   
           padding: 11px 22px;
+
+          @media screen and(min-width: 1921px){
+            font-size: 1vw;  
+            padding: .55vw 1.1vw;
+          }
+
+          @media screen and(max-width: 1200px){
+            font-size: 2vw;
+            padding: 1vw 2vw;
+          }
         }
       }		
 		}
   }
-  
-  .activeLink{
-    background-color: rgb(109, 109, 233);
-    box-shadow: inset 3px 3px 10px rgb(97, 97, 228),
-      inset -3px -3px 10px rgb(97, 97, 228);
+}
+
+.activeLink{
+  // border: 1px solid red;
+  background-color: rgb(109, 109, 233);
+  box-shadow: inset 3px 3px 10px rgb(97, 97, 228),
+    inset -3px -3px 10px rgb(97, 97, 228);
+
+  @media screen and(min-width: 1921px){
+    box-shadow: inset .3vw .3vw .5vw rgb(97, 97, 228),
+    inset -.3vw -.3vw .5vw rgb(97, 97, 228);
   }
 
-	.cart{
-		position: relative;
-		font-family: sans-serif;
-		flex-basis: 20%;
-		text-align: right;
-	}
+  @media screen and(max-width: 1200px){
+    box-shadow: inset .3vw .3vw .5vw rgb(97, 97, 228),
+    inset -.3vw -.3vw .5vw rgb(97, 97, 228);
+  }
 }
+
+.cart{
+  position: relative;
+  font-family: sans-serif;
+  
+  border-radius: $br;
+  background-color: rgba(109, 109, 223, 0.8);
+
+  @media screen and(min-width: 1921px){
+    border-radius: $br1921;
+  }
+
+  @media screen and(max-width: 1200px){
+    border-radius: $br;
+  }
+
+& > a {
+  display: block;
+  position: relative;
+  border-radius: $br;  
+  color: white;
+  font-size: 19px;
+  padding: 11px 22px;
+  cursor: pointer;
+
+  @media screen and(min-width: 1921px){
+    border-radius: $br1921;
+    font-size: 1vw;
+    padding: .55vw 1vw;
+  }
+
+  @media screen and(max-width: 1200px){
+    border-radius: $br;
+    font-size: 2vw;
+    padding: 1vw 2vw;
+  }
+  }
+} 
 
 .totalInCart{
 	position: absolute;
 	background-color: red;
-	color: cornsilk;
-	font-size: 12px;
 	border-radius: 50%;
-	width: 15px;
-	height: 15px;
-	line-height: 16px;
-	right: -9px;
-	bottom: -7px;
-	text-align: center;
+	width: 20px;
+	height: 20px;
+	right: -7px;
+	bottom: -5px;
+  text-align: center;
+
+  @media screen and(min-width: 1921px){
+    width: 1vw;
+    height: 1vw;
+    right: .3vw;
+    bottom: .25vw;
+  }
+
+  @media screen and(max-width: 1200px){
+    width: 2vw;
+    height: 2vw;
+    right: -.7vw;
+    bottom: -.5vw;
+  }
+
+  & > p{
+    position: absolute;
+    font-family: sans-serif;
+    font-size: 13px;
+    line-height: 1;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    margin: 0;
+
+    @media screen and(min-width: 1921px){
+      font-size: .65vw;
+    }
+
+    @media screen and(max-width: 1200px){
+      font-size: 1.3vw;
+    }
+  }
 }
 
 .logo{
 	font-family: Helvetica;
 	font-style: normal;
-	font-size: 4vh;
+  font-size: 39px;
 	color:#FFC000;
 	text-shadow: 2px 2px 0 #0e62c9;
-	cursor: pointer;
+  cursor: pointer;
+  
+  @media screen and(min-width: 1921px){
+    font-size: 4vh;
+    text-shadow: .1vw .1vw 0 #0e62c9;
+  }
+
+  @media screen and(max-width: 1200px){
+    font-size: 4vh;
+    text-shadow: .2vw .2vw 0 #0e62c9;
+  }
 }
 
 .logoParody{
 	font-family: sans-serif;
 	font-style: italic;
 	color: #1D1AB2;
-	text-shadow: 1px 1px 10px rgba(6, 37, 111, 0.24);
+  text-shadow: 1px 1px 10px rgba(6, 37, 111, 0.24);
+  
+  @media screen and(min-width: 1921px){
+    text-shadow: .05vw .05vw .5vw rgba(6, 37, 111, 0.24);
+  }
+
+  @media screen and(max-width: 1200px){
+    text-shadow: .1vw .1vw 1vw rgba(6, 37, 111, 0.24);
+  }
 }
 
 .content{
-  background-image: linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
-	min-height: calc(100vh - 10vh); //10vh - it's height of header
-	padding: 20px 0;
-}
+  width: 100%;
+  padding: 20px 0;
+  
+  @media screen and(min-width: 1921px){
+    padding: 1vw 0;
+  }
 
-
-//TEST DIV --------------------
-.divForTest{
-	width: 100%;
-	height: 100px;
-	background: rgba(0, 0, 0, 0.555);
-	//line-height: 100px;
-	text-align: center;
+  @media screen and(max-width: 1200px){
+    padding: 2vw 0;
+  }
 }
-//the end of TEST DIV-----------
 

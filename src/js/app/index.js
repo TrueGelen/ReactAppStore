@@ -5,35 +5,20 @@ import { routes, routesMap } from '../routes'
 import moduleStyles from './app.module.scss'
 import mainStyles from '../../scss/main.module.scss'
 
-//temporary imports
-import LazyInp from '../components/inputs/lazyInput/lazyInput'
-import ItemsCounter from '../components/inputs/itemsCounter'
-
 class App extends React.Component {
 
   render() {
 
     //to del later
-    this.phonesStore = this.props.rootStore.phones
-    this.televisionsStore = this.props.rootStore.televisions
-    this.tabletsStore = this.props.rootStore.tablets
     this.cartStore = this.props.rootStore.cart
 
-    // console.log(this.cartStore.totalPositionsInCart)
-
-
-    //console.log(routesMap)
     let routsContainers = routes.map((route) => {
-      //console.log(route)
       return <Route path={route.url}
         component={route.container}
         exact={route.exact}
         key={route.url}
       />
     })
-		/* console.log(routsContainers)
-		console.log("STYLES========")
-		console.log(styles)*/
 
     return (
       <Router>
@@ -76,14 +61,6 @@ class App extends React.Component {
                 {routsContainers}
               </Switch>
             </div>
-
-            {/* test ItemsCounter */}
-            {/* <div className={moduleStyles.divForTest}>
-							<ItemsCounter
-								currentCount={1}
-								max={10}
-							/>
-						</div> */}
           </main>
         </>
       </Router >

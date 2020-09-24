@@ -73,55 +73,55 @@ import Page404 from '../pages/page404'
 let routes = [
   {
     name: 'cart',
-    url: '/TrueGelen/ReactAppStore/cart',
+    url: '/ReactAppStore/dist/cart',
     container: cart,
     exact: true
   },
   {
     name: 'home',
-    url: '/TrueGelen/ReactAppStore/',
+    url: '/ReactAppStore/dist/',
     container: homePage,
     exact: true
   },
   {
     name: 'phones',
-    url: '/TrueGelen/ReactAppStore/phones',
+    url: '/ReactAppStore/dist/phones',
     container: phones,
     exact: true
   },
   {
     name: 'televisions',
-    url: '/TrueGelen/ReactAppStore/televisions',
+    url: '/ReactAppStore/dist/televisions',
     container: tvs,
     exact: true
   },
   {
     name: 'tablets',
-    url: '/TrueGelen/ReactAppStore/tablets',
+    url: '/ReactAppStore/dist/tablets',
     container: tablets,
     exact: true
   },
   {
     name: 'television',
-    url: '/TrueGelen/ReactAppStore/televisions/:id',
+    url: '/ReactAppStore/dist/televisions/:id',
     container: ProductPage,
     exact: true
   },
   {
     name: 'phone',
-    url: '/TrueGelen/ReactAppStore/phones/:id',
+    url: '/ReactAppStore/dist/phones/:id',
     container: ProductPage,
     exact: true
   },
   {
     name: 'tablet',
-    url: '/TrueGelen/ReactAppStore/tablets/:id',
+    url: '/ReactAppStore/dist/tablets/:id',
     container: ProductPage,
     exact: true
   },
   {
     name: 'order',
-    url: '/TrueGelen/ReactAppStore/order',
+    url: '/ReactAppStore/dist/order',
     container: order,
     exact: true
   },

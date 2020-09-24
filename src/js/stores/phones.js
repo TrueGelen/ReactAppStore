@@ -12,8 +12,8 @@ export default class {
 
     this.labels = {
       diagonal: "Диагональ",
-      frontCamera: "Фронтальная камера (МП):",
-      mainCamera: "Основная камера (МП):",
+      frontCamera: "Фронтальная камера (МП)",
+      mainCamera: "Основная камера (МП)",
       processor: "Процессор",
       memory: "Объем памяти (Гб)",
       about: 'О товаре'

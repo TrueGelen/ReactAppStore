@@ -32,9 +32,3 @@ a{
 .container{
 	@include wrapper();
 }
-
-.borderRadiusBlock{
-  padding: 10px 20px;
-	border-radius: $br;
-	background-color: $lb;
-}

@@ -40,7 +40,7 @@ class App extends React.Component {
         <>
           <header className={moduleStyles.header}>
             <div className={`${mainStyles.container} ${moduleStyles.container_mod}`}>
-              <div className={`${moduleStyles.headerWrapper} ${mainStyles.noselect} ${mainStyles.borderRadiusBlock}`}>
+              <div className={`${moduleStyles.headerWrapper} ${mainStyles.noselect}`}>
                 <div className={moduleStyles.logo}>
                   <Link to={routesMap.home}>
                     <span className={moduleStyles.logoParody}>Gparody</span>Shop

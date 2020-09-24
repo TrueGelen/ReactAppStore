@@ -8,31 +8,3 @@
 	@include col();
 	@include size(4);
 }
-
-.title{
-  font-family: sans-serif;
-}
-
-//page styles
-.pagePhoneWrapper{
-	margin-top: 20px;
-	display: flex;
-	justify-content: space-between;
-}
-
-.productsWrapper{
-	width: 82%;
-	@include row-flex();
-}
-
-//--filters
-
-.filtersWrapper{	
-	background-color: white;
-	border-radius: 5px;
-	width: 18%;
-}
-
-.filter{
-
-}

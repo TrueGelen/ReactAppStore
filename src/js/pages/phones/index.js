@@ -8,6 +8,7 @@ import { urlBuilder } from '../../routes'
 /* components */
 import PhoneCard from '../../components/productCard/phone'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
+import PageLayout from '../../components/pageLayouts/layout1'
 
 /* styles */
 import moduleStyles from './phones.module.scss'
@@ -60,20 +61,10 @@ function phones(props) {
   }
 
   return (
-    <>
-      <h1 className={`${mainStyles.borderRadiusBlock} ${moduleStyles.title}`}>Мобильные телефоны</h1>
-
-      <div className={moduleStyles.pagePhoneWrapper}>
-        <div className={moduleStyles.filtersWrapper}>
-          Фильтры
-					<div className={moduleStyles.filter}>Какой то фильтр</div>
-        </div>
-
-        <div className={moduleStyles.productsWrapper}>
-          {products}
-        </div>
-      </div>
-    </>
+    <PageLayout
+      title={{ text: "Телефоны" }}
+      products={products}
+    />
   )
 }
 

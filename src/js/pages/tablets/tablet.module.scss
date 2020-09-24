@@ -7,36 +7,3 @@
   align-self: center;
   transform: translateY(80%);
 }
-
-//page styles
-.pagePhoneWrapper{	
-	display: flex;
-  justify-content: space-between;
-  
-  margin-top: 20px;
-  // margin-top: 1vw;
-}
-
-.productsWrapper{
-  // border: 1px solid red;
-	width: 80%;
-  @include row-flex();
-
-  margin: -5px 0;
-}
-
-.title{
-  font-family: sans-serif;
-  font-size: 35px;
-}
-
-//--filters
-.filtersWrapper{	
-	background-color: $lb;
-	border-radius: $br;
-	width: 18%;
-}
-
-.filter{
-
-}

@@ -10,10 +10,10 @@ import { urlBuilder } from '../../routes'
 import LineCard from '../../components/productCard/lineCard'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
 import Counter from '../../components/inputs/minmax'
+import PageLayout from '../../components/pageLayouts/layout1'
 
 /* styles */
 import moduleStyles from './tv.module.scss'
-import mainStyles from '../../../scss/main.module.scss'
 
 
 function tv(props) {
@@ -67,20 +67,10 @@ function tv(props) {
   })
 
   return (
-    <>
-      <h1 className={`${mainStyles.borderRadiusBlock} ${moduleStyles.title}`}>Телевизоры</h1>
-
-      <div className={moduleStyles.pagePhoneWrapper}>
-        <div className={moduleStyles.filtersWrapper}>
-          Фильтры
-					<div className={moduleStyles.filter}>Какой то фильтр</div>
-        </div>
-
-        <div className={moduleStyles.productsWrapper}>
-          {products}
-        </div>
-      </div>
-    </>
+    <PageLayout
+      title={{ text: "Телевизоры" }}
+      products={products}
+    />
   )
 }
 

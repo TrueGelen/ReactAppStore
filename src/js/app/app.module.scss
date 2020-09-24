@@ -1,4 +1,5 @@
 @import '../../scss/smart-grid.sass';
+@import '../../scss/vars.scss';
 
 .header{
 	display: flex;
@@ -19,7 +20,11 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	font-size: 2vh;
+  font-size: 2vh;
+  
+  padding: 10px 20px;
+  border-radius: $br;
+  background-color: $lb;
 
 	h1{
 		flex-basis: 40%;
@@ -29,7 +34,7 @@
     // border: 1px solid red;
 		font-family: sans-serif;
     flex-basis: 40%;    
-    border-radius: 5px;
+    border-radius: $br;
     background-color: rgba(109, 109, 223, 0.8);
 
     overflow: hidden;

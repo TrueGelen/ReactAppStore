@@ -74,10 +74,10 @@ function ProductPage({ button, ...props }) {
         // onSwiper={(swiper) => console.log(swiper)}
         >
           <SwiperSlide className={moduleStyles.slide}>
-            <img src={`${store.baseUrlImgs}${{ ...product.imgs }[0]}`} />
+            <img src={`../${store.baseUrlImgs}${{ ...product.imgs }[0]}`} />
           </SwiperSlide>
           <SwiperSlide className={moduleStyles.slide}>
-            <img src={`${store.baseUrlImgs}${{ ...product.imgs }[1]}`} />
+            <img src={`../${store.baseUrlImgs}${{ ...product.imgs }[1]}`} />
           </SwiperSlide>
         </Swiper>
 

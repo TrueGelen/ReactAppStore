@@ -51,7 +51,6 @@ function tv(props) {
       onClick={() => { props.history.push(urlBuilder('television', TV.id)) }}
       button={
         <BtnAddToCart
-          addClassName={moduleStyles.button}
           inCart={cart.inCart(TV.id)}
           onAdd={() => { cart.addToCart(TV.id) }}
           onRemove={() => { cart.removeFromCart(TV.id) }} />

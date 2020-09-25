@@ -49,7 +49,6 @@ function tablets(props) {
       onClick={() => { props.history.push(urlBuilder('tablet', tablet.id)) }}
       button={
         <BtnAddToCart
-          addClassName={moduleStyles.button}
           inCart={cart.inCart(tablet.id)}
           onAdd={() => { cart.addToCart(tablet.id) }}
           onRemove={() => { cart.removeFromCart(tablet.id) }} />

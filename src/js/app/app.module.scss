@@ -64,6 +64,8 @@
       border-radius: $br;
     }
 
+    @include xs(display, none);
+
 		ul{
       // border: 1px solid red;
       width: 100%;
@@ -126,6 +128,8 @@
   @media screen and(max-width: 1200px){
     border-radius: $br;
   }
+
+  @include xs(display, none);
 
 & > a {
   display: block;
@@ -204,12 +208,12 @@
   cursor: pointer;
   
   @media screen and(min-width: 1921px){
-    font-size: 4vh;
+    font-size: 4vw;
     text-shadow: .1vw .1vw 0 #0e62c9;
   }
 
   @media screen and(max-width: 1200px){
-    font-size: 4vh;
+    font-size: 4vw;
     text-shadow: .2vw .2vw 0 #0e62c9;
   }
 }
@@ -239,6 +243,31 @@
 
   @media screen and(max-width: 1200px){
     padding: 2vw 0;
+  }
+}
+
+.burger{
+  display: none;
+  position: relative;  
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: $br;
+  background-color: rgba(109, 109, 223, 0.8);
+
+  width: 7vw;
+  padding: 1vw;
+
+  @include xs-block{
+    display: flex;
+  }
+
+  & > *{
+    width: 100%;
+    height: 2px;
+    background-color: $lb;
+    margin: 2px 0;
   }
 }
 

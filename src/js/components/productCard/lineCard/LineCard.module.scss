@@ -21,12 +21,35 @@
     padding: .75vw 1.25vw;
   }
 
+  @media screen and (max-width: 1200px){
+    height: 25vw;
+    border-radius: $br;
+    margin: .5vw 0;
+    padding: 1.5vw 2.5vw;
+  }
+
+  @include sm-block{
+    height: 37vw;
+    border-radius: $br;
+    margin: .75vw 0;
+    padding: 2.25vw 2vw;
+    // padding: 5vw 2vw;
+  }
+
 	&:hover{
     box-shadow: 0px 0px 5px 0px rgba(132, 72, 189, 0.3);
     transform: scale(1.01);
 
     @media screen and (min-width: 1921px){
       box-shadow: 0px 0px .25vw 0px rgba(132, 72, 189, 0.3);
+    }
+
+    @media screen and (max-width: 1200px){
+      box-shadow: 0px 0px .5vw 0px rgba(132, 72, 189, 0.3);
+    }
+
+    @include sm-block{
+      box-shadow: 0px 0px .75vw 0px rgba(132, 72, 189, 0.3);
     }
 	}
 }
@@ -39,6 +62,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include sm-block{
+    width: 30%;
+  }
 }
 
 .imgInCard{
@@ -48,8 +75,19 @@
 }
 
 .descriptionBlock{
-  // border: 1px solid red;
-  margin-left: 1.5vw;
+  margin-left: 30px;
+
+  @media screen and (min-width: 1921px){
+    margin-left: 1.5vw;
+  }
+
+  @media screen and (max-width: 1200px){
+    margin-left: 3vw;
+  }
+
+  @include sm-block{
+    margin-left: 2.5vw;
+  }
 }
 
 .priceBlock{
@@ -77,6 +115,14 @@
       font-size: 1.25vw;
     }
 
+    @media screen and (max-width: 1200px){
+      font-size: 2.5vw;
+    }
+
+    @include sm-block{
+      font-size: 3.75vw;
+    }
+
     & > span{
       font-size: 14px;
       color: black;
@@ -85,6 +131,14 @@
 
       @media screen and (min-width: 1921px){
         font-size: .7vw;
+      }
+
+      @media screen and (max-width: 1200px){
+        font-size: 1.4vw;
+      }
+
+      @include sm-block{
+        font-size: 2.1vw;
       }
     }
   }
@@ -99,6 +153,14 @@
 
   @media screen and (min-width: 1921px){
     font-size: 1.25vw;
+  }
+
+  @media screen and (max-width: 1200px){
+    font-size: 2vw;
+  }
+
+  @include sm-block{
+    font-size: 3vw;
   }
 
   &:hover{
@@ -119,12 +181,30 @@
       font-size: .7vw;
     }
 
+    @media screen and (max-width: 1200px){
+      margin: .5vw 0;
+      font-size: 1.2vw;
+    }
+
+    @include sm-block{
+      margin: .75vw 0;
+      font-size: 1.8vw;
+    }
+
     & > span {
       color: rgb(150, 41, 41);
       font-size: 14px;
       
       @media screen and (min-width: 1921px){
         font-size: .7vw;
+      }
+
+      @media screen and (max-width: 1200px){
+        font-size: 1.4vw;
+      }
+
+      @include sm-block{
+        font-size: 2.1vw;
       }
     }
   }

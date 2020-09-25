@@ -17,12 +17,29 @@
 	  border-radius: $br1921;
   }
 
+  @media screen and (max-width: 1200px){
+    padding: 1vw 1.5vw;
+	  border-radius: $br;
+  }
+
+  @include sm-block{
+    padding: 1.5vw;
+  }
+
 	&:hover{
     box-shadow: 0px 0px 5px 0px rgba(132, 72, 189, 0.3);
     transform: scale(1.01);
 
     @media screen and (min-width: 1921px){
       box-shadow: 0px 0px .25vw 0px rgba(132, 72, 189, 0.3);
+    }
+
+    @media screen and (max-width: 1200px){
+      box-shadow: 0px 0px .5vw 0px rgba(132, 72, 189, 0.3);
+    }
+
+    @include sm-block{
+      box-shadow: 0px 0px .75vw 0px rgba(132, 72, 189, 0.3);
     }
   }
   
@@ -31,6 +48,14 @@
 
     @media screen and (min-width: 1921px){
       margin: .25vw 0;
+    }
+
+    @media screen and (max-width: 1200px){
+      margin: .5vw 0;
+    }
+
+    @include sm-block{
+      margin: .75vw 0;
     }
   }
 }
@@ -53,26 +78,58 @@
     font-size: 1.1vw;
   }
 
+  @media screen and (max-width: 1200px){
+    font-size: 2vw;
+  }
+
+  @include sm-block{
+    font-size: 2.5vw;
+  }
+
   &:hover{
     color: $hlk;
   }
 }
 
 .bottom{
+  // border: 1px solid red;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
   width: 100%;
+
+  @media screen and (max-width: 1200px){
+    justify-content: center;
+    flex-wrap: wrap;
+
+    & > div{
+      order: 1;
+    }
+  }
 }
 
 .price{
+  // border: 1px solid red;
   position: relative;
   font-family: sans-serif;
   font-size: 16px;
+  margin: 0;
 
   @media screen and (min-width: 1921px){
     font-size: .8vw;
+  }
+
+  @media screen and (max-width: 1200px){
+    order: 0;
+    font-size: 1.6vw;
+    margin-bottom: 1vw;
+  }
+
+  @include sm-block{
+    order: 0;
+    font-size: 2.4vw;
+    margin-bottom: 1.5vw;
   }
 
   &::before{
@@ -88,6 +145,10 @@
 
     @media screen and (min-width: 1921px){
       left: -.8vw;
+    }
+
+    @media screen and (max-width: 1200px){
+      display: none;
     }
   }
 }

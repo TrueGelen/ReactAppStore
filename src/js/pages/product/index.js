@@ -96,7 +96,6 @@ function ProductPage({ button, ...props }) {
 
 
           <BtnAddToCart
-            // addClassName={moduleStyles.button}
             inCart={cart.inCart(product.id)}
             onAdd={() => { cart.addToCart(product.id) }}
             onRemove={() => { cart.removeFromCart(product.id) }} />

@@ -7,6 +7,18 @@ import mainStyles from '../../scss/main.module.scss'
 
 class App extends React.Component {
 
+  state = {
+    mobMenu: false
+  }
+
+  openMobMenu = () => {
+    this.setState({ mobMenu: true })
+  }
+
+  hideMobMenu = () => {
+    this.setState({ mobMenu: false })
+  }
+
   render() {
 
     //to del later
@@ -53,6 +65,13 @@ class App extends React.Component {
                   {/* <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div> */}
                   <div className={moduleStyles.totalInCart}><p>{this.cartStore.totalProductsInCart}</p></div>
                 </div>
+                <div
+                  className={moduleStyles.burger}
+                  onClick={this.openMobMenu}>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
               </div>
             </div>
           </header>
@@ -66,6 +85,24 @@ class App extends React.Component {
               </Switch>
             </div>
           </main>
+
+          <div className={moduleStyles.mobMenuWrap}>
+            <div className={mainStyles.container}>
+              <menu className={moduleStyles.mobMenu}>
+                <ul>
+                  <NavLink
+                    to={routesMap.televisions}
+                    activeClassName={moduleStyles.activeLink}><li>Телевизоры</li></NavLink>
+                  <NavLink
+                    to={routesMap.phones}
+                    activeClassName={moduleStyles.activeLink}><li>Телефоны</li></NavLink>
+                  <NavLink
+                    to={routesMap.tablets}
+                    activeClassName={moduleStyles.activeLink}><li>Планшеты</li></NavLink>
+                </ul>
+              </menu>
+            </div>
+          </div>
         </>
       </Router >
     )

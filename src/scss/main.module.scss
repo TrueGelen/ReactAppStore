@@ -44,3 +44,10 @@ body{
     padding: 0;
   }
 }
+
+.swiper-button-prev{
+  width: 6vw;
+  @include sm-block{
+    font-size: 6vw !important;
+  }
+}

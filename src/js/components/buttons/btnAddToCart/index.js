@@ -46,7 +46,6 @@ export default function BtnAddToCart({
 
 BtnAddToCart.defaultProps = {
   className: undefined,
-  addClassName: '',
   onAdd: () => { },
   onRemove: () => { },
   inCart: false,
@@ -56,7 +55,6 @@ BtnAddToCart.defaultProps = {
 
 BtnAddToCart.propTypes = {
   className: PropTypes.string,
-  addClassName: PropTypes.string,
   onAdd: PropTypes.func,
   onRemove: PropTypes.func,
   inCart: PropTypes.bool,

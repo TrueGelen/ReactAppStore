@@ -1,3 +1,4 @@
+@import '../../../../scss/smart-grid.sass';
 @import '../../../../scss/vars.scss';
 
 .input{
@@ -14,6 +15,16 @@
     width: 2vw;
     font-size: .8vw;
   }
+
+  @media screen and (max-width: 1200px){
+    width: 4vw;
+    font-size: 1.6vw;
+  }
+
+  @include sm-block{
+    width: 6vw;
+    font-size: 3vw;
+  }
 }
 
 .button{
@@ -28,6 +39,16 @@
   @media screen and (min-width: 1921px){
     width: 1.5vw;
     height: 1.5vw;
+  }
+
+  @media screen and (max-width: 1200px){
+    width: 3vw;
+    height: 3vw;
+  }
+
+  @include sm-block{
+    width: 4.5vw;
+    height: 4.5vw;
   }
 
   &:active{

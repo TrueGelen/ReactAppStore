@@ -48,11 +48,7 @@
 	}
 
 	menu{
-    // border: 1px solid red;
-		font-family: sans-serif;
-    // flex-basis: 40%;    
-    border-radius: $br;
-    background-color: rgba(109, 109, 223, 0.8);
+    @extend .menu;
 
     overflow: hidden;
 
@@ -73,13 +69,9 @@
       justify-content: space-between;
       
       & > a {
-        transition: .2s;
+        
 
-        & > li{
-          cursor: pointer;
-          color: white;
-          font-size: 19px;
-  
+        & > li{  
           padding: 11px 22px;
 
           @media screen and(min-width: 1921px){
@@ -94,6 +86,27 @@
         }
       }		
 		}
+  }
+}
+
+.menu{
+  // border: 1px solid red;
+  font-family: sans-serif;
+  border-radius: $br;
+  background-color: $menuBg;
+
+  &__ul{    
+
+  }
+
+  &__a{
+    transition: .2s;
+  }
+
+  &__li{
+    cursor: pointer;
+    color: white;
+    font-size: 19px;
   }
 }
 
@@ -119,7 +132,7 @@
   font-family: sans-serif;
   
   border-radius: $br;
-  background-color: rgba(109, 109, 223, 0.8);
+  background-color: $menuBg;
 
   @media screen and(min-width: 1921px){
     border-radius: $br1921;
@@ -254,7 +267,7 @@
   align-items: center;
 
   border-radius: $br;
-  background-color: rgba(109, 109, 223, 0.8);
+  background-color: $menuBg;
 
   width: 7vw;
   padding: 1vw;
@@ -271,3 +284,59 @@
   }
 }
 
+.mobMenu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: white;
+
+  & > ul{
+    @extend .menu;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    & > a{
+
+      & > li{
+        font-size: 9vw;
+        padding: 5vw 9vw;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.closeMobMenu{
+  position: absolute;
+  right: 4vw;
+  top: 4vw;
+
+  border-radius: $br;
+  background-color: $menuBg;
+
+  width: 7vw;
+  height: 7vw;
+  // padding: 1vw;
+
+  & > div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6vw;
+    height: 2px;
+    background-color: $lb;
+
+    &:first-child{
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:last-child{
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}

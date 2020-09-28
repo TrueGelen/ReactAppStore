@@ -8,7 +8,7 @@ import mainStyles from '../../scss/main.module.scss'
 class App extends React.Component {
 
   state = {
-    mobMenu: false
+    mobMenu: true
   }
 
   openMobMenu = () => {
@@ -44,16 +44,25 @@ class App extends React.Component {
 								</Link>
                 </div>
                 <menu className={moduleStyles.menu}>
-                  <ul>
+                  <ul className={moduleStyles.menu__ul}>
                     <NavLink
+                      className={moduleStyles.menu__a}
                       to={routesMap.televisions}
-                      activeClassName={moduleStyles.activeLink}><li>Телевизоры</li></NavLink>
+                      activeClassName={moduleStyles.activeLink}><li className={moduleStyles.menu__li}>
+                        Телевизоры</li>
+                    </NavLink>
                     <NavLink
+                      className={moduleStyles.menu__a}
                       to={routesMap.phones}
-                      activeClassName={moduleStyles.activeLink}><li>Телефоны</li></NavLink>
+                      activeClassName={moduleStyles.activeLink}><li className={moduleStyles.menu__li}>
+                        Телефоны</li>
+                    </NavLink>
                     <NavLink
+                      className={moduleStyles.menu__a}
                       to={routesMap.tablets}
-                      activeClassName={moduleStyles.activeLink}><li>Планшеты</li></NavLink>
+                      activeClassName={moduleStyles.activeLink}><li className={moduleStyles.menu__li}>
+                        Планшеты</li>
+                    </NavLink>
                   </ul>
                 </menu>
                 <div className={moduleStyles.cart}>
@@ -65,8 +74,7 @@ class App extends React.Component {
                   {/* <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div> */}
                   <div className={moduleStyles.totalInCart}><p>{this.cartStore.totalProductsInCart}</p></div>
                 </div>
-                <div
-                  className={moduleStyles.burger}
+                <div className={moduleStyles.burger}
                   onClick={this.openMobMenu}>
                   <div></div>
                   <div></div>
@@ -85,24 +93,37 @@ class App extends React.Component {
               </Switch>
             </div>
           </main>
+          {
+            this.state.mobMenu &&
+            <menu className={moduleStyles.mobMenu}>
+              <div className={moduleStyles.closeMobMenu}
+                onClick={this.hideMobMenu}>
+                <div></div>
+                <div></div>
+              </div>
+              <ul>
+                <NavLink
+                  className={moduleStyles.menu__a}
+                  to={routesMap.televisions}
+                  activeClassName={moduleStyles.activeLink}><li className={moduleStyles.menu__li}
+                    onClick={this.hideMobMenu}>Телевизоры</li>
+                </NavLink>
+                <NavLink
+                  className={moduleStyles.menu__a}
+                  to={routesMap.phones}
+                  activeClassName={moduleStyles.activeLink}><li className={moduleStyles.menu__li}
+                    onClick={this.hideMobMenu}>Телефоны</li>
+                </NavLink>
+                <NavLink
+                  className={moduleStyles.menu__a}
+                  to={routesMap.tablets}
+                  activeClassName={moduleStyles.activeLink}><li className={moduleStyles.menu__li}
+                    onClick={this.hideMobMenu}>Планшеты</li>
+                </NavLink>
+              </ul>
+            </menu>
+          }
 
-          <div className={moduleStyles.mobMenuWrap}>
-            <div className={mainStyles.container}>
-              <menu className={moduleStyles.mobMenu}>
-                <ul>
-                  <NavLink
-                    to={routesMap.televisions}
-                    activeClassName={moduleStyles.activeLink}><li>Телевизоры</li></NavLink>
-                  <NavLink
-                    to={routesMap.phones}
-                    activeClassName={moduleStyles.activeLink}><li>Телефоны</li></NavLink>
-                  <NavLink
-                    to={routesMap.tablets}
-                    activeClassName={moduleStyles.activeLink}><li>Планшеты</li></NavLink>
-                </ul>
-              </menu>
-            </div>
-          </div>
         </>
       </Router >
     )
@@ -110,3 +131,9 @@ class App extends React.Component {
 }
 
 export default withStore(App)
+
+{/* <div className={moduleStyles.mobMenuWrap}>
+              <div className={mainStyles.container}></div>
+
+              </div>
+            </div> */}

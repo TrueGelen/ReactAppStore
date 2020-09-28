@@ -8,7 +8,7 @@ import mainStyles from '../../scss/main.module.scss'
 class App extends React.Component {
 
   state = {
-    mobMenu: true
+    mobMenu: false
   }
 
   openMobMenu = () => {
@@ -69,7 +69,7 @@ class App extends React.Component {
                   <NavLink
                     to={routesMap.cart}
                     activeClassName={moduleStyles.activeLink}>
-                    Cart
+                    Корзина
                   </NavLink>
                   {/* <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div> */}
                   <div className={moduleStyles.totalInCart}><p>{this.cartStore.totalProductsInCart}</p></div>
@@ -102,6 +102,13 @@ class App extends React.Component {
                 <div></div>
               </div>
               <ul>
+                <NavLink
+                  className={moduleStyles.menu__a}
+                  to={routesMap.cart}
+                  activeClassName={moduleStyles.activeLink}><li className={moduleStyles.menu__li}
+                    onClick={this.hideMobMenu}>
+                    Корзина</li>
+                </NavLink>
                 <NavLink
                   className={moduleStyles.menu__a}
                   to={routesMap.televisions}

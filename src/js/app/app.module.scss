@@ -111,7 +111,6 @@
 }
 
 .activeLink{
-  // border: 1px solid red;
   background-color: rgb(109, 109, 233);
   box-shadow: inset 3px 3px 10px rgb(97, 97, 228),
     inset -3px -3px 10px rgb(97, 97, 228);
@@ -128,11 +127,9 @@
 }
 
 .cart{
+  @extend .menu;
+
   position: relative;
-  font-family: sans-serif;
-  
-  border-radius: $br;
-  background-color: $menuBg;
 
   @media screen and(min-width: 1921px){
     border-radius: $br1921;
@@ -145,11 +142,12 @@
   @include xs(display, none);
 
 & > a {
+  @extend .menu__a;
+  @extend .menu__li;
+
   display: block;
   position: relative;
-  border-radius: $br;  
-  color: white;
-  font-size: 19px;
+  border-radius: $br;
   padding: 11px 22px;
   cursor: pointer;
 
@@ -229,6 +227,11 @@
     font-size: 4vw;
     text-shadow: .2vw .2vw 0 #0e62c9;
   }
+
+  @include xs-block{
+    font-size: 7vw;
+    text-shadow: .5vw .5vw 0 #0e62c9;
+  }
 }
 
 .logoParody{
@@ -269,7 +272,8 @@
   border-radius: $br;
   background-color: $menuBg;
 
-  width: 7vw;
+  width: 9vw;
+  height: 9vw;
   padding: 1vw;
 
   @include xs-block{
@@ -280,7 +284,7 @@
     width: 100%;
     height: 2px;
     background-color: $lb;
-    margin: 2px 0;
+    margin: 2.5px 0;
   }
 }
 
@@ -291,6 +295,7 @@
   width: 100%;
   height: 100vh;
   background-color: white;
+  z-index: 999;
 
   & > ul{
     @extend .menu;
@@ -300,12 +305,15 @@
     left: 50%;
     transform: translate(-50%, -50%);
 
+    overflow: hidden;
+
     & > a{
 
       & > li{
         font-size: 9vw;
         padding: 5vw 9vw;
         text-align: center;
+        background-color: inherit;
       }
     }
   }
@@ -319,8 +327,8 @@
   border-radius: $br;
   background-color: $menuBg;
 
-  width: 7vw;
-  height: 7vw;
+  width: 9vw;
+  height: 9vw;
   // padding: 1vw;
 
   & > div{

@@ -53,7 +53,7 @@ export default function LineCard({
       </div>
 
       <div className={moduleStyles.priceBlock}>
-        <p><span>цена:</span> {price.text} <span>₽</span></p>
+        <p><span>цена:</span> {price.text} <span>&#8381;</span></p>
         {inCart && counter}
         {button}
       </div>

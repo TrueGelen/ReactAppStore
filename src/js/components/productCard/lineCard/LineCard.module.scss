@@ -11,29 +11,29 @@
 	
   transition: box-shadow .2s, border .2s;
 
-  margin: 5px 0;
   padding: 15px 25px;
 
   @media screen and (min-width: 1921px){
     height: 12.5vw;
     border-radius: $br1921;
-    margin: .25vw 0;
     padding: .75vw 1.25vw;
   }
 
   @media screen and (max-width: 1200px){
     height: 25vw;
     border-radius: $br;
-    margin: .5vw 0;
     padding: 1.5vw 2.5vw;
   }
 
   @include sm-block{
     height: 37vw;
     border-radius: $br;
-    margin: .75vw 0;
     padding: 2.25vw 2vw;
-    // padding: 5vw 2vw;
+  }
+
+  @include xs-block{
+    flex-wrap: wrap;
+    height: auto;
   }
 
 	&:hover{
@@ -66,6 +66,11 @@
   @include sm-block{
     width: 30%;
   }
+
+  @include xs-block{
+    width: 40%;
+    height: auto;
+  }
 }
 
 .imgInCard{
@@ -75,6 +80,7 @@
 }
 
 .descriptionBlock{
+  // border: 1px solid red;
   margin-left: 30px;
 
   @media screen and (min-width: 1921px){
@@ -88,6 +94,11 @@
   @include sm-block{
     margin-left: 2.5vw;
   }
+
+  @include xs-block{
+    width: calc(100% - 40% -10px);
+    margin-left: 10px;
+  }
 }
 
 .priceBlock{
@@ -99,8 +110,35 @@
   justify-content: space-around;
   height: 100%;
 
+  @include xs-block{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   & > *{
     margin: 0;
+  }
+
+  & > div{
+
+    &:nth-child(2){
+      @include xs-block{
+        border: 1px solid $border;
+        border-radius: $br;
+        padding: 1vw;
+        order: 1;
+      }
+    }
+
+    &:last-child{
+      @include xs-block{
+        order: 0;
+      }
+    }
   }
 
   & > p {
@@ -123,6 +161,11 @@
       font-size: 3.75vw;
     }
 
+    @include xs-block{
+      font-size: 5.5vw;
+      order: 2;
+    }
+
     & > span{
       font-size: 14px;
       color: black;
@@ -139,6 +182,10 @@
 
       @include sm-block{
         font-size: 2.1vw;
+      }
+
+      @include xs-block{
+        font-size: 3.5vw;
       }
     }
   }
@@ -161,6 +208,10 @@
 
   @include sm-block{
     font-size: 3vw;
+  }
+
+  @include xs-block{
+    font-size: 4.5vw;
   }
 
   &:hover{
@@ -191,6 +242,10 @@
       font-size: 1.8vw;
     }
 
+    @include xs-block{
+      font-size: 3vw;
+    }
+
     & > span {
       color: rgb(150, 41, 41);
       font-size: 14px;
@@ -205,6 +260,10 @@
 
       @include sm-block{
         font-size: 2.1vw;
+      }
+
+      @include xs-block{
+        font-size: 3vw;
       }
     }
   }

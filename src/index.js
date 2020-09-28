@@ -9,6 +9,9 @@ import rootStore from './js/stores'
 //temporary import for adding items to database
 // import './js/temporaryToAddData/addDataToFirebase'
 
+//temporary import for testing authentication
+// import './js/temporaryToAddData/auth_test'
+
 //console.log(scss)
 
 //get cart from local storage and then emb app to DOM

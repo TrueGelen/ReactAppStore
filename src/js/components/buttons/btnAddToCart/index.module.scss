@@ -15,7 +15,7 @@
 	@extend .noselect;
 	// width: 100%;
 	// height: 1.6vw;
-	line-height: 1vw;
+	line-height: 1.5;
 	border-radius: $br;
 	font-size: 14px;
 	letter-spacing: 1.5px;
@@ -40,6 +40,11 @@
 
   @include sm-block{
     font-size: 2.1vw;
+    padding: 2vw 2vw;
+  }
+
+  @include xs-block{
+    font-size: 3vw;
     padding: 2vw 2vw;
   }
 }

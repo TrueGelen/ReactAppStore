@@ -21,7 +21,7 @@ function cart(props) {
     return <tr key={id}>
       <td className={moduleStyles.td}>{cartStore.products[id].title}</td>
       <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>{`${cartStore.products[id].price} ₽`}</td>
-      <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>{cartStore.products[id].amount}</td>
+      {/* <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>{cartStore.products[id].amount}</td> */}
       <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>
         {`${cartStore.products[id].price * cartStore.products[id].amount} ₽`}
       </td>
@@ -51,7 +51,7 @@ function cart(props) {
           <tr>
             <td className={moduleStyles.td}>Наименование</td>
             <td className={moduleStyles.td}>Цена за шт.</td>
-            <td className={moduleStyles.td}>Кол-во</td>
+            {/* <td className={moduleStyles.td}>Кол-во</td> */}
             <td className={moduleStyles.td}>Цена за все</td>
             <td className={moduleStyles.td}>Изменить кол-во</td>
             <td className={moduleStyles.td}>Удалить</td>

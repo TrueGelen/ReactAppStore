@@ -36,6 +36,30 @@
   @include sm-block{
     width: 100%;
   }
+
+  @include xs-block{
+    margin: -5px 0;
+  }
+
+  & > *{
+    margin: 5px 0;
+
+    @media screen and (min-width: 1921px){
+      margin: .25vw 0;
+    }
+
+    @media screen and (max-width: 1200px){
+      margin: .5vw 0;
+    }
+
+    @include sm-block{
+      margin: .75vw 0;
+    }
+
+    @include xs-block{
+      margin: 5px 0;
+    }
+  }
 }
 
 .title{
@@ -56,6 +80,10 @@
     padding: 1vw 2vw;
     border-radius: $br;
     font-size: 3.5vw;
+  }
+
+  @include xs-block{
+    font-size: 6.5vw;
   }
 }
 

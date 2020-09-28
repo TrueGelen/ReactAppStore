@@ -29,7 +29,9 @@ function ProductPage({ button, ...props }) {
     phones: "phones",
     tablets: "tablets"
   }
-  const storeKey = props.match.path.substring(props.match.path.indexOf("/") + 1, props.match.path.lastIndexOf("/"))
+  const storeKey = props.match.path.substring(
+    props.match.path.indexOf("/") + 1, props.match.path.lastIndexOf("/")
+  )
 
   //product store
   const store = props.rootStore[storeMap[storeKey]]
@@ -57,6 +59,17 @@ function ProductPage({ button, ...props }) {
     }
   }
 
+  let swiperSlides = Object.values({ ...product.imgs }).map((img) => {
+    console.log(img);
+    return < SwiperSlide
+      key={img}
+      className={moduleStyles.slide} >
+      <img src={`../${store.baseUrlImgs}${img}`} />
+    </SwiperSlide >
+  })
+
+  console.log(swiperSlides)
+
   return (
     <>
       <h1 className={`${mainStyles.borderRadiusBlock} ${moduleStyles.title}`}>{product.title}</h1>
@@ -69,16 +82,17 @@ function ProductPage({ button, ...props }) {
           navigation
           loop
           pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
+        // scrollbar={{ draggable: true }}
         // onSlideChange={() => console.log('slide change')}
         // onSwiper={(swiper) => console.log(swiper)}
         >
-          <SwiperSlide className={moduleStyles.slide}>
+          {swiperSlides}
+          {/* <SwiperSlide className={moduleStyles.slide}>
             <img src={`../${store.baseUrlImgs}${{ ...product.imgs }[0]}`} />
           </SwiperSlide>
           <SwiperSlide className={moduleStyles.slide}>
             <img src={`../${store.baseUrlImgs}${{ ...product.imgs }[1]}`} />
-          </SwiperSlide>
+          </SwiperSlide> */}
         </Swiper>
 
         <div className={moduleStyles.description}>
@@ -86,7 +100,7 @@ function ProductPage({ button, ...props }) {
         </div>
 
         <div className={moduleStyles.priceBlock}>
-          <p><span>цена:</span> {product.price} <span>₽</span></p>
+          <p><span>цена:</span> {product.price} <span>&#8381;</span></p>
 
           <Counter
             className={`${moduleStyles.counter} ${!cart.inCart(product.id) && moduleStyles.counterHide}`}

@@ -27,9 +27,9 @@ class RootStore {
 
     //dist base url. for gitHub page
     this.baseUrlImgs = {
-      phones: 'ReactAppStore/dist/assets/imgs/phones/',
-      televisions: 'ReactAppStore/dist/assets/imgs/televisions/',
-      tablets: 'ReactAppStore/dist/assets/imgs/tablets/'
+      phones: '/ReactAppStore/dist/assets/imgs/phones/',
+      televisions: '/ReactAppStore/dist/assets/imgs/televisions/',
+      tablets: '/ReactAppStore/dist/assets/imgs/tablets/'
     }
 
     this.localStorage = localStorage

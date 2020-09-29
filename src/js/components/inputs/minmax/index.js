@@ -50,22 +50,22 @@ export default class extends React.PureComponent {
     console.log('minmax render');
     return (
       <div className={`${moduleStyles.counter} ${this.props.className}`}>
-        <button
+        <div
           className={this.props.min >= Number(this.props.cnt) ? `${moduleStyles.button} ${moduleStyles.minus} ${moduleStyles.disabled}` :
             `${moduleStyles.button} ${moduleStyles.minus}`}
           onClick={this.decrease}
-        ><p>&ndash;</p></button>
+        ><p>&ndash;</p></div>
         <LazyInp
           nativeProps={{ type: 'text', className: moduleStyles.input }}
           value={this.props.cnt}
           onChange={this.onChange}
           ref={this.lazyInput}
         />
-        <button
+        <div
           onClick={this.increase}
           className={this.props.max <= Number(this.props.cnt) ? `${moduleStyles.button} ${moduleStyles.minus} ${moduleStyles.disabled}` :
             `${moduleStyles.button} ${moduleStyles.minus}`}
-        ><p>+</p></button>
+        ><p>+</p></div>
       </div>
     );
   }

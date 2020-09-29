@@ -68,8 +68,6 @@ function ProductPage({ button, ...props }) {
     </SwiperSlide >
   })
 
-  console.log(swiperSlides)
-
   return (
     <>
       <h1 className={`${mainStyles.borderRadiusBlock} ${moduleStyles.title}`}>{product.title}</h1>

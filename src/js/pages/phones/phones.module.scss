@@ -3,12 +3,18 @@
 
 //styles for modify component
 .cardStyles{
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 
-	@include col();
-  @include size(4);
-  
-  @include sm-block{
-    margin-bottom: 3vw;
+	// @include col();
+  // @include size(4);
+
+  width: calc(33.33% - 15px);
+
+  @include xs-block{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 10px;
   }
 }

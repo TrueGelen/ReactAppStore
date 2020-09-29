@@ -82,7 +82,6 @@ class App extends React.Component {
                     <p>{this.cartStore.totalProductsInCart}</p>
                   </div>
                 </div>
-
                 <div className={moduleStyles.burger}
                   onClick={this.openMobMenu}>
                   <div></div>

@@ -1,6 +1,14 @@
 @import '../../../../scss/smart-grid.sass';
 @import '../../../../scss/vars.scss';
 
+.counter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex-wrap: wrap;
+}
+
 .input{
   font-family: sans-serif;
   width: 40px;
@@ -33,6 +41,7 @@
 }
 
 .button{
+  position: relative;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -40,6 +49,10 @@
   border: 1px solid $border;
   outline: none;
   cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media screen and (min-width: 1921px){
     width: 1.5vw;
@@ -64,6 +77,15 @@
   &:active{
     box-shadow: none;
     border: 1px solid $border;
+  }
+
+  & > p{
+    // border: 1px solid red;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // // transform: translate(-50%, -50%);
+    // line-height: 1;
   }
   
   &__minus{

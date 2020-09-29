@@ -98,7 +98,7 @@ function ProductPage({ button, ...props }) {
         </div>
 
         <div className={moduleStyles.priceBlock}>
-          <p><span>цена:</span> {product.price} <span>&#8381;</span></p>
+          <p><span>цена:</span> {product.price} <span>р.</span></p>
 
           <Counter
             className={`${moduleStyles.counter} ${!cart.inCart(product.id) && moduleStyles.counterHide}`}

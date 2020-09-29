@@ -1,7 +1,13 @@
+/* libs */
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link, NavLink } from 'react-router-dom'
+
+/* helpers */
 import withStore from '../hocs/withStore'
 import { routes, routesMap } from '../routes'
+import BtnAddToCart from '../components/buttons/btnAddToCart'
+
+/* styles */
 import moduleStyles from './app.module.scss'
 import mainStyles from '../../scss/main.module.scss'
 
@@ -72,8 +78,11 @@ class App extends React.Component {
                     Корзина
                   </NavLink>
                   {/* <div className={moduleStyles.totalInCart}>{this.cartStore.totalPositionsInCart}</div> */}
-                  <div className={moduleStyles.totalInCart}><p>{this.cartStore.totalProductsInCart}</p></div>
+                  <div className={moduleStyles.totalInCart}>
+                    <p>{this.cartStore.totalProductsInCart}</p>
+                  </div>
                 </div>
+
                 <div className={moduleStyles.burger}
                   onClick={this.openMobMenu}>
                   <div></div>
@@ -84,8 +93,7 @@ class App extends React.Component {
             </div>
           </header>
 
-
-
+          {/* content */}
           <main className={moduleStyles.content}>
             <div className={`${mainStyles.container} ${moduleStyles.container_mod}`}>
               <Switch>
@@ -93,6 +101,8 @@ class App extends React.Component {
               </Switch>
             </div>
           </main>
+
+          {/* mobMenu */}
           {
             this.state.mobMenu &&
             <menu className={moduleStyles.mobMenu}>
@@ -138,9 +148,3 @@ class App extends React.Component {
 }
 
 export default withStore(App)
-
-{/* <div className={moduleStyles.mobMenuWrap}>
-              <div className={mainStyles.container}></div>
-
-              </div>
-            </div> */}

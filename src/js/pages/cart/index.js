@@ -23,7 +23,7 @@ function cart(props) {
       <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>{`${cartStore.products[id].price} ₽`}</td>
       {/* <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>{cartStore.products[id].amount}</td> */}
       <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>
-        {`${cartStore.products[id].price * cartStore.products[id].amount} ₽`}
+        {`${cartStore.products[id].price * cartStore.products[id].amount} р.`}
       </td>
       <td className={`${moduleStyles.td} ${moduleStyles.taCenter}`}>
         <Counter
@@ -63,7 +63,7 @@ function cart(props) {
         <tfoot>
           <tr>
             <td className={moduleStyles.td}>Общая цена:</td>
-            <td className={moduleStyles.td}>{`${cartStore.total} ₽`}</td>
+            <td className={moduleStyles.td}>{`${cartStore.total} р.`}</td>
           </tr>
         </tfoot>
       </table>

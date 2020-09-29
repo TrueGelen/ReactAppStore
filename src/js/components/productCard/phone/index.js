@@ -34,7 +34,7 @@ export default function PhoneCard({
       <div className={moduleStyles.bottom}>
         {button && button}
         <p className={price.styles ? moduleStyles.price : `${moduleStyles.price} ${price.styles}`}>
-          {price.text && `${price.text}`} &#8381;
+          {price.text && `${price.text}`} р.
         </p>
       </div>
     </div>

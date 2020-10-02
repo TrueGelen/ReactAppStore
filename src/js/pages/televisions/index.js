@@ -18,6 +18,7 @@ import moduleStyles from './tv.module.scss'
 
 function tv(props) {
   console.log('tv page')
+
   //television store
   const TVStore = props.rootStore.televisions
 
@@ -69,6 +70,10 @@ function tv(props) {
     <PageLayout
       title={{ text: "Телевизоры" }}
       products={products}
+      filters={{ ...TVStore.filters }}
+      filterLabels={TVStore.labels}
+      onFilter={TVStore.filter}
+      onPriceFilter={TVStore.rangeChanger}
     />
   )
 }

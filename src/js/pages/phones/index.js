@@ -8,7 +8,7 @@ import { urlBuilder } from '../../routes'
 /* components */
 import PhoneCard from '../../components/productCard/phone'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
-import PageLayout from '../../components/pageLayouts/layout1'
+import PageLayout from '../../components/pageLayouts/layout2'
 
 /* styles */
 import moduleStyles from './phones.module.scss'

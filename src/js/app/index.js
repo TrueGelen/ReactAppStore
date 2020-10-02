@@ -5,7 +5,6 @@ import { BrowserRouter as Router, Route, Switch, Link, NavLink } from 'react-rou
 /* helpers */
 import withStore from '../hocs/withStore'
 import { routes, routesMap } from '../routes'
-import BtnAddToCart from '../components/buttons/btnAddToCart'
 
 /* styles */
 import moduleStyles from './app.module.scss'

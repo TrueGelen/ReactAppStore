@@ -22,7 +22,6 @@ function tablets(props) {
 
   //get tablets from server
   useEffect(() => {
-    // console.log('useEffect TV page', TVStore)
     tabletStore.getTablets()
   }, [])
 
@@ -68,6 +67,9 @@ function tablets(props) {
     <PageLayout
       title={{ text: "Планшеты" }}
       products={products}
+      filters={{ ...tabletStore.filters }}
+      filterLabels={tabletStore.labels}
+      onFilter={tabletStore.filter}
     />
   )
 }

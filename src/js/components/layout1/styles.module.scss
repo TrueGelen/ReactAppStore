@@ -16,10 +16,6 @@
   @media screen and (max-width: 1200px){
     margin-top: 2vw;
   }
-
-  @include sm-block{
-    flex-wrap: wrap;
-  }
 }
 
 .productsWrapper{
@@ -27,6 +23,10 @@
   // border: 1px solid red;
 	width: 80%;
   // @include row-flex();
+
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
 
   margin-bottom: -10px;
 
@@ -116,29 +116,6 @@
   }
 }
 
-.filterButton{
-  display: none;
-  background-color: $lb;
-  width: 100%;
-  padding: 2vw;
-  border-radius: $br;
-  box-shadow: 0px 0px .5vw 0px rgb(185, 184, 184);
-
-  & > p{
-    font-family: sans-serif;
-    text-align: center;
-    font-size: 3vw;
-
-    margin: 0;
-  } 
-
-  margin-bottom: 1.5vw;
-
-  @include sm-block{
-    display: block;
-  }
-}
-
 .filters{
   // border: 1px solid red;
   margin-top: 20px;
@@ -167,10 +144,6 @@
   }
 }
 
-.filterWrap{
-  margin-bottom: 15px;
-}
-
 .filterTitle{
   font-family: sans-serif;
   font-size: 18px;
@@ -178,79 +151,10 @@
   margin: 0;
 
   @media screen and (min-width: 1921px){
-    font-size: 1vw;
+    font-size: .8vw;
   }
 
   @media screen and (max-width: 1200px){
     font-size: 1.6vw;
   }
-
-  &_mb30px{
-    margin-bottom: 30px;
-
-    @media screen and (min-width: 1921px){
-      margin-bottom: 2vw;
-    }
-
-    @media screen and (max-width: 1200px){
-      margin-bottom: 2.5vw;
-    }
-  }
-}
-
-.filterBlock{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  border: 1px solid $border;
-  border-radius: $br;
-
-  margin-top: 5px;
-}
-
-.checkBoxFilter{
-  display: flex;
-  min-width: 50%;
-
-  & > span {
-
-    @media screen and (min-width: 1921px){
-      font-size: 1.5vw;
-      padding: .8vw;
-
-      & > span {
-        & > svg{
-          width: 1.2vw;
-          height: 1.2vw;
-        }
-      }      
-    }
-
-    @media screen and (max-width: 1200px){
-      font-size: 1.4vw;
-      padding: .8vw;
-    }
-  }
-
-  & > p{
-    font-family: sans-serif;
-    font-size: 16px;
-
-    margin-left: 5px;
-
-    @media screen and (min-width: 1921px){
-      font-size: 1vw;
-      margin-left: 0vw;
-    }
-
-    @media screen and (max-width: 1200px){
-      font-size: 1.4vw;
-      margin-left: 0vw;
-    }
-  }
-}
-
-.rangeSlider{
-  // margin-top: 15px;
 }

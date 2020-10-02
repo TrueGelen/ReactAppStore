@@ -24,7 +24,8 @@ function ProductPage({ button, ...props }) {
 
   SwiperCore.use([Navigation, Pagination, Scrollbar]);
 
-  const storeMap = {
+  /* the same code also is in a component pagelayout1 in filters */
+  const storeMapForPage = {
     televisions: "televisions",
     phones: "phones",
     tablets: "tablets"
@@ -34,7 +35,9 @@ function ProductPage({ button, ...props }) {
   )
 
   //product store
-  const store = props.rootStore[storeMap[storeKey]]
+  const store = props.rootStore[storeMapForPage[storeKey]]
+
+  /*---- the same code also is in a component pagelayout1 in filters ---*/
 
   //cart store
   const cart = props.rootStore.cart

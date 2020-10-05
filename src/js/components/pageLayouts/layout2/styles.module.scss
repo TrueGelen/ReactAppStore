@@ -4,6 +4,7 @@
 //page styles
 .pageWrapper{	
   // border: 1px solid red;
+  position: relative;
 	display: flex;
   justify-content: space-between;
   
@@ -15,6 +16,10 @@
 
   @media screen and (max-width: 1200px){
     margin-top: 2vw;
+  }
+
+  @include sm-block{
+    flex-wrap: wrap;
   }
 }
 
@@ -95,66 +100,33 @@
 
 //--filters
 
-.filtersWrapper{	
+.filterButton{
+  display: none;
   background-color: $lb;
-	border-radius: $br;
-  width: 18%;
-  padding: 15px 10px;
-
-  @media screen and (min-width: 1921px){
-    border-radius: $br1921;
-    padding: .75vw .5vw;
-  }
-
-  @media screen and (max-width: 1200px){
-    border-radius: $br;
-    padding: 1.5vw 1vw;
-  }
-
-  @include sm-block{
-    display: none;
-  }
-}
-
-.filters{
-  // border: 1px solid red;
-  margin-top: 20px;
-
-  @media screen and (min-width: 1921px){
-    margin-top: 1vw;
-  }
-
-  @media screen and (max-width: 1200px){
-    margin-top: 2vw;
-  }
+  width: 100%;
+  padding: 2vw;
+  border-radius: $br;
+  box-shadow: 0px 0px .5vw 0px rgb(185, 184, 184);
 
   & > p{
     font-family: sans-serif;
-    font-size: 14px;
     text-align: center;
+    font-size: 3vw;
+
     margin: 0;
 
-    @media screen and (min-width: 1921px){
-      font-size: .6vw;
+    @include xs-block{
+     font-size: 5vw;
     }
+  } 
 
-    @media screen and (max-width: 1200px){
-      font-size: 1.2vw;
-    }
-  }
-}
+  margin-bottom: 1.5vw;
 
-.filterTitle{
-  font-family: sans-serif;
-  font-size: 18px;
-  text-align: center;
-  margin: 0;
-
-  @media screen and (min-width: 1921px){
-    font-size: .8vw;
+  @include sm-block{
+    display: block;
   }
 
-  @media screen and (max-width: 1200px){
-    font-size: 1.6vw;
+  @include xs-block{
+    margin-bottom: 10px;
   }
 }

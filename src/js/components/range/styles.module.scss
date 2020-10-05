@@ -1,3 +1,4 @@
+@import '../../../scss/smart-grid.sass';
 @import '../../../scss/vars.scss';
 
 .range{
@@ -19,6 +20,10 @@
   @media screen and (max-width: 1200px){
     height: 3vw;
   }
+
+  @include sm-block{
+    height: 8vw;
+  }
 }
 
 .rageLine{
@@ -34,6 +39,10 @@
 
   @media screen and (max-width: 1200px){
     height: .5vw;
+  }
+
+  @include sm-block{
+    height: 1vw;
   }
 }
 
@@ -60,6 +69,11 @@
     border-radius: .3vw;
     box-shadow: 0px .2vw .3vw #AAA;
   }
+
+  @include sm-block{
+    height: 6vw;
+    width: 6vw;
+  }
 }
 
 .thumbLabel{
@@ -85,6 +99,13 @@
     font-size: 1.25vw;
     padding: .4vw;
     border-radius: .3vw;
+  }
+
+  @include sm-block{
+    top: -5.5vw;
+    font-size: 2.5vw;
+    padding: 1vw;
+    border-radius: $br;
   }
 }
 

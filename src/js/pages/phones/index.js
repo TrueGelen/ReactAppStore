@@ -12,7 +12,6 @@ import PageLayout from '../../components/pageLayouts/layout2'
 
 /* styles */
 import moduleStyles from './phones.module.scss'
-import mainStyles from '../../../scss/main.module.scss'
 
 
 /* code */
@@ -64,6 +63,10 @@ function phones(props) {
     <PageLayout
       title={{ text: "Телефоны" }}
       products={products}
+      filters={{ ...phoneStore.filters }}
+      filterLabels={phoneStore.labels}
+      onFilter={phoneStore.filter}
+      onPriceFilter={phoneStore.rangeChanger}
     />
   )
 }

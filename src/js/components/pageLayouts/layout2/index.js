@@ -1,7 +1,8 @@
 /* lib */
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import Checkbox from '@material-ui/core/Checkbox';
+import Filters from '../../filtersOnProductPage'
 
 /* styles */
 import moduleStyles from './styles.module.scss'
@@ -10,63 +11,72 @@ export default function PageLayout({
   className,
   title,
   products,
-  productsData,
   filters,
+  filterLabels,
+  onFilter,
+  onPriceFilter,
   ...otherProps }) {
 
-  /* const [checked, setChecked] = React.useState(true);
+  const [mobFilters, setMobFilters] = useState(false)
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  }; */
+  const openMobFilters = () => {
+    setMobFilters(true)
+  }
+
+  const hideMobFilters = () => {
+    setMobFilters(false)
+  }
 
   let checkboxes = []
 
-  console.log("productsData", productsData)
-  // console.log("products", products)
-
   for (let key in filters) {
-    console.log("filters[key]", filters[key])
-    // console.log("productsData[key]", productsData[key])
-    checkboxes.push(<div key={Math.random()}>
-      <h4>{filters[key]}</h4>
-      <div>
-        {productsData.map(prod => {
-          return (
-            <div key={Math.random()}>
-              <Checkbox
-                defaultChecked
-                color="primary"
-                inputProps={{ 'aria-label': 'secondary checkbox' }}
-              />
-              <p>{prod.data().description[key]}</p>
-            </div>
-          )
-        })}
-      </div>
-    </div>)
+    if (key !== "price") {
+      checkboxes.push(
+        <div key={key}
+          className={moduleStyles.filterWrap}>
+          <h4 className={moduleStyles.filterTitle}>{filterLabels[key]}</h4>
+          <div className={moduleStyles.filterBlock}>
+            {
+              Object.keys({ ...filters[key] }).map(val => {
+                return (
+                  <div key={val}
+                    className={moduleStyles.checkBoxFilter}>
+                    <Checkbox
+                      checked={filters[key][val]}
+                      color="primary"
+                      inputProps={{ 'aria-label': 'secondary checkbox' }}
+                      onChange={(e) => { onFilter(key, val) }}
+                    />
+                    <p>{val}</p>
+                  </div>
+                )
+              })
+            }
+          </div>
+        </div>
+      )
+    }
   }
-
-  console.log(checkboxes)
 
   return (
     <>
       <h1 className={` ${moduleStyles.title}`}>{title.text}</h1>
 
       <div className={moduleStyles.pageWrapper}>
-        <div className={moduleStyles.filtersWrapper}>
-          <p className={moduleStyles.filterTitle}>Фильтры</p>
-          <div className={moduleStyles.filters}>
-            <div>
-              {checkboxes}
-              {/* <Checkbox
-                defaultChecked
-                color="primary"
-                inputProps={{ 'aria-label': 'secondary checkbox' }}
-              /> */}
-              <p>some</p>
-            </div>
-          </div>
+
+        <Filters
+          filters={filters}
+          filterLabels={filterLabels}
+          onFilter={onFilter}
+          onPriceFilter={onPriceFilter}
+          isMobFilterOpen={mobFilters}
+          onCloseMobFilters={hideMobFilters}
+        />
+
+        <div
+          className={moduleStyles.filterButton}
+          onClick={openMobFilters}>
+          <p>Фильтры</p>
         </div>
 
         <div className={moduleStyles.productsWrapper}>
@@ -83,7 +93,11 @@ PageLayout.defaultProps = {
     styles: null,
     text: null
   },
-  products: null
+  products: null,
+  filters: null,
+  filterLabels: null,
+  onPriceFilter: () => { },
+  onFilter: () => { }
 }
 
 PageLayout.propTypes = {
@@ -92,5 +106,9 @@ PageLayout.propTypes = {
     styles: PropTypes.string,
     text: PropTypes.string
   }),
-  products: PropTypes.arrayOf(PropTypes.node)
+  products: PropTypes.arrayOf(PropTypes.node),
+  filters: PropTypes.object,
+  filterLabels: PropTypes.object,
+  onPriceFilter: PropTypes.func,
+  onFilter: PropTypes.func
 }

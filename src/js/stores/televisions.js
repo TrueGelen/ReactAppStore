@@ -57,18 +57,6 @@ export default class {
     this.filter()
   }
 
-  /* @action filter = (parameter, value) => {
-    this.televisions = [...this.televisionsFromServer]
-    this.filters[parameter][value] = !this.filters[parameter][value]
-
-    for (let param in this.filters) {
-      this.televisions = this.televisions.filter(
-        tv => Object.keys(this.filters[param])
-          .some(val => this.filters[param][val] && val === tv.data().description[param].toString())
-      )
-    }
-  } */
-
   @action filter = (parameter = null, value = null) => {
     this.televisions = [...this.televisionsFromServer]
     if (parameter !== null && value !== null)

@@ -28,12 +28,12 @@ export default function PageLayout({
   for (let key in filters) {
     console.log("filters[key]", filters[key])
     // console.log("productsData[key]", productsData[key])
-    checkboxes.push(<div key={Math.random()}>
+    checkboxes.push(<div key={filters[key]}>
       <h4>{filters[key]}</h4>
       <div>
         {productsData.map(prod => {
           return (
-            <div key={Math.random()}>
+            <div key={prod.data().description[key]}>
               <Checkbox
                 defaultChecked
                 color="primary"
@@ -59,12 +59,6 @@ export default function PageLayout({
           <div className={moduleStyles.filters}>
             <div>
               {checkboxes}
-              {/* <Checkbox
-                defaultChecked
-                color="primary"
-                inputProps={{ 'aria-label': 'secondary checkbox' }}
-              /> */}
-              <p>some</p>
             </div>
           </div>
         </div>

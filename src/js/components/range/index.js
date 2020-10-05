@@ -26,7 +26,7 @@ class LabeledTwoThumbs extends React.Component {
   render() {
     return (
       <div
-        className={moduleStyles.range}
+        className={`${moduleStyles.range} ${this.props.className}`}
       /* style={{
         display: 'flex',
         justifyContent: 'center',

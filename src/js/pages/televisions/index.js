@@ -1,6 +1,5 @@
 /* lib */
 import React, { useEffect } from 'react'
-// import { useHistory } from "react-router-dom";
 
 /* helpers */
 import withStore from '../../hocs/withStore'

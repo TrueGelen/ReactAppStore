@@ -70,6 +70,7 @@ function tablets(props) {
       filters={{ ...tabletStore.filters }}
       filterLabels={tabletStore.labels}
       onFilter={tabletStore.filter}
+      onPriceFilter={tabletStore.rangeChanger}
     />
   )
 }

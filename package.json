@@ -24,7 +24,7 @@
 		"css-mqpacker": "^7.0.0",
 		"cssnano": "^5.0.8",
 		"html-webpack-plugin": "^5.3.2",
-		"mini-css-extract-plugin": "^2.2.0",
+		"mini-css-extract-plugin": "^2.2.1",
 		"postcss": "^8.3.6",
 		"postcss-loader": "^6.1.1",
 		"postcss-preset-env": "^6.7.0",

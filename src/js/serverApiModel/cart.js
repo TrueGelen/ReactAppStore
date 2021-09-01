@@ -1,35 +1,27 @@
-import firebase from '../firebaseConfig/fbConfig'
+import { db } from '../firebaseConfig/fbConfig'
+import { doc, getDoc } from "firebase/firestore";
 import collections from './collections'
 
+// todo: не оч подход бежать по всем коллекциям и запрашивать наличие id
 async function getProductById(id) {
-  try {
-    for (let collection in collections) {
-      console.log(collection)
-      let product = await firebase.firestore().collection(collection).doc(id).get()
-      if (product.exists)
-        return product.data()
-    }
-    new Error('no such doc');
-  }
-  catch (err) {
-    console.log(err)
-  }
+	try {
+		for (let collection in collections) {
+			const docRef = doc(db, collection, id);
+			const docSnap = await getDoc(docRef);
+
+			if (docSnap.exists()) {
+				console.log("Document data:", docSnap.data());
+				return docSnap.data()
+			} else {
+				// doc.data() will be undefined in this case
+				console.log("No such document!");
+			}
+		}
+		new Error('no such doc');
+	}
+	catch (err) {
+		console.log(err)
+	}
 }
 
 export { getProductById }
-
-
-/* old vers */
-// import firebase from '../firebaseConfig/fbConfig'
-
-// async function getProductById(id) {
-//   try {
-//     let product = await firebase.firestore().collection('phones').doc(id).get()
-//     return product.exists ? product.data() : new Error('no such doc');
-//   }
-//   catch (err) {
-//     console.log(err)
-//   }
-// }
-
-// export { getProductById }

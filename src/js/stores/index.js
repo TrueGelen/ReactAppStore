@@ -10,35 +10,38 @@ import * as televisions from '../serverApiModel/televisions'
 import * as apiCart from '../serverApiModel/cart'
 
 class RootStore {
-  constructor() {
-    this.api = {
-      phones,
-      tablets,
-      televisions,
-      apiCart
-    }
+	constructor() {
+		this.api = {
+			phones,
+			tablets,
+			televisions,
+			apiCart
+		}
 
-    //dev base url
-    /* this.baseUrlImgs = {
-      phones: '/assets/imgs/phones/',
-      televisions: '/assets/imgs/televisions/',
-      tablets: '/assets/imgs/tablets/'
-    } */
+		//dev base url
+		/* this.baseUrlImgs = {
+			phones: '/assets/images/phones/',
+			televisions: '/assets/images/televisions/',
+			tablets: '/assets/images/tablets/'
+		} */
 
-    //dist base url. for gitHub page
-    this.baseUrlImgs = {
-      phones: 'ReactAppStore/dist/assets/imgs/phones/',
-      televisions: 'ReactAppStore/dist/assets/imgs/televisions/',
-      tablets: 'ReactAppStore/dist/assets/imgs/tablets/'
-    }
+		// todo: наверняка можно сделать baseUrl = ReactAppStore/dist/assets/ и функцию которая бы клеила остатки к этому адресу.
+		// и с помощью webpack'а менять этот baseUrl на /assets/ в зависимости от команды для сборки
 
-    this.localStorage = localStorage
-    this.cart = new cartStore(this)
-    this.phones = new phonesStore(this)
-    this.order = new orderStore(this)
-    this.televisions = new TvStore(this)
-    this.tablets = new TabletsStore(this)
-  }
+		//dist base url. for gitHub page
+		this.baseUrlImgs = {
+			phones: 'ReactAppStore/dist/assets/images/phones/',
+			televisions: 'ReactAppStore/dist/assets/images/televisions/',
+			tablets: 'ReactAppStore/dist/assets/images/tablets/'
+		}
+
+		this.localStorage = localStorage
+		this.cart = new cartStore(this)
+		this.phones = new phonesStore(this)
+		this.order = new orderStore(this)
+		this.televisions = new TvStore(this)
+		this.tablets = new TabletsStore(this)
+	}
 }
 
 export default new RootStore()

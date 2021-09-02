@@ -2,7 +2,7 @@ import { db } from '../firebaseConfig/fbConfig'
 import { doc, getDoc } from "firebase/firestore";
 import collections from './collections'
 
-// todo: не оч подход бежать по всем коллекциям и запрашивать наличие id
+// todo: наверное не оч подход бежать по всем коллекциям и запрашивать наличие id
 async function getProductById(id) {
 	try {
 		for (let collection in collections) {

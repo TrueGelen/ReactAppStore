@@ -2,11 +2,14 @@ import { db } from '../firebaseConfig/fbConfig'
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import collections from './collections'
 
-async function getPhones() {
-	return (await getDocs(collection(db, collections.phones))).docs
+export async function getPhones() {
+	console.log("test api getPhones")
+	const response = await getDocs(collection(db, collections.phones))
+	console.log("test api getPhones response\n", response)
+	return response.docs
 }
 
-async function getPhoneById(id) {
+export async function getPhoneById(id) {
 	try {
 		const docSnap = await getDoc(doc(db, collections.phones, id));
 		if (docSnap.exists()) {
@@ -19,5 +22,3 @@ async function getPhoneById(id) {
 		console.log(err)
 	}
 }
-
-export { getPhones, getPhoneById }

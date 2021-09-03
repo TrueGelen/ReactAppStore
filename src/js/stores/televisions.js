@@ -1,88 +1,100 @@
-import { observable, action, computed } from "mobx"
+import { observable, action, makeObservable } from "mobx"
+import { BASE_IMAGES_URL } from "../constants"
 
 export default class {
-  @observable televisionsFromServer = []
-  @observable televisions = []
+	productsFromServer = []
+	products = []
+	product = null
+	filters = {
+		price: {
+			min: 0,
+			max: 0,
+			range: {
+				min: 0,
+				max: 0
+			}
+		}
+	}
+	api = null
+	baseImgsUrl = null
+	labels = null
 
-  @observable product = null
 
-  @observable filters = {
-    price: {
-      min: 0,
-      max: 0,
-      range: {
-        min: 0,
-        max: 0
-      }
-    }
-  }
+	constructor(rootStore) {
+		makeObservable(this, {
+			productsFromServer: observable,
+			products: observable,
+			product: observable,
+			filters: observable,
+			setFilters: action,
+			rangeChanger: action,
+			filter: action,
+			getProducts: action,
+			getProduct: action
+		})
 
+		this.api = rootStore.api.tvsAPI
+		this.baseImgsUrl = BASE_IMAGES_URL.televisions
+		this.labels = {
+			diagonal: 'Диагональ',
+			hz: 'Частота обновления экрана (Гц)',
+			screenResolution: 'Разрешение экрана',
+			wifi: 'Wi-Fi',
+			about: 'О товаре'
+		}
+	}
 
-  constructor(rootStore) {
-    this.api = rootStore.api.televisions
+	setFilters = () => {
+		for (let key in this.labels) {
+			if (key !== "about") {
+				//.map() - get all values by key and in Set we make it unique. Also find a max price
+				[...new Set(this.productsFromServer.map(prod => {
+					this.filters.price.max = Math.max(this.filters.price.max, Number(prod.data().price))
+					this.filters.price.range.max = this.filters.price.max
+					return prod.data().description[key]
+				}))]
+					//by key we write new obj where key is unique value and value is boolean
+					.forEach(val => {
+						this.filters[key] = { ...this.filters[key], [val]: true }
+					})
+			}
+		}
+	}
 
-    this.baseUrlImgs = rootStore.baseUrlImgs.televisions
+	rangeChanger = (values) => {
+		this.filters.price.range.min = values[0]
+		this.filters.price.range.max = values[1]
 
-    this.labels = {
-      diagonal: 'Диагональ',
-      hz: 'Частота обновления экрана (Гц)',
-      screenResolution: 'Разрешение экрана',
-      wifi: 'Wi-Fi',
-      about: 'О товаре'
-    }
-  }
+		this.filter()
+	}
 
-  @action setFilters = () => {
-    for (let key in this.labels) {
-      if (key !== "about") {
-        //.map() - get all values by key and in Set we make it unique. Also find a max price
-        [...new Set(this.televisionsFromServer.map(prod => {
-          this.filters.price.max = Math.max(this.filters.price.max, Number(prod.data().price))
-          this.filters.price.range.max = this.filters.price.max
-          return prod.data().description[key]
-        }))]
-          //by key we write new obj where key is unique value and value is boolean
-          .forEach(val => {
-            this.filters[key] = { ...this.filters[key], [val]: true }
-          })
-      }
-    }
-    // console.log("aaa", this.filters)
-  }
+	filter = (parameter = null, value = null) => {
+		this.products = [...this.productsFromServer]
+		if (parameter !== null && value !== null)
+			this.filters[parameter][value] = !this.filters[parameter][value]
 
-  @action rangeChanger = (values) => {
-    this.filters.price.range.min = values[0]
-    this.filters.price.range.max = values[1]
+		for (let param in this.filters) {
+			this.products = this.products.filter(
+				tv => Object.keys(this.filters[param])
+					.some(val => {
+						if (param === "price") {
+							return this.filters.price.range.min <= tv.data().price && this.filters.price.range.max >= tv.data().price
+						} else {
+							return this.filters[param][val] && val === tv.data().description[param].toString()
+						}
+					})
+			)
+		}
+	}
 
-    this.filter()
-  }
+	getProducts = async () => {
+		this.productsFromServer = await this.api.getTelevisions()
+		this.products = [...this.productsFromServer]
 
-  @action filter = (parameter = null, value = null) => {
-    this.televisions = [...this.televisionsFromServer]
-    if (parameter !== null && value !== null)
-      this.filters[parameter][value] = !this.filters[parameter][value]
+		this.setFilters()
+	}
 
-    for (let param in this.filters) {
-      this.televisions = this.televisions.filter(
-        tv => Object.keys(this.filters[param])
-          .some(val => {
-            if (param === "price") {
-              return this.filters.price.range.min <= tv.data().price && this.filters.price.range.max >= tv.data().price
-            } else {
-              return this.filters[param][val] && val === tv.data().description[param].toString()
-            }
-          })
-      )
-    }
-  }
+	getProduct = async (id) => this.product = { id, ...await this.api.getTvById(id) }
 
-  @action getTelevisions = async () => {
-    this.televisionsFromServer = await this.api.getTelevisions()
-    this.televisions = [...this.televisionsFromServer]
-
-    this.setFilters()
-  }
-  @action getProduct = async (id) => this.product = { id, ...await this.api.getTvById(id) }
-
-  urlToImg = (url) => `${this.baseUrlImgs}${url}`
+	getImageURL = (url) => `${this.baseImgsUrl}${url}`
 }

@@ -1,38 +1,40 @@
+import { configure } from "mobx"
+
+configure({
+	enforceActions: "always",
+	computedRequiresReaction: false,
+	reactionRequiresObservable: false,
+	observableRequiresReaction: true,
+	disableErrorBoundaries: true
+})
+
 import cartStore from './cart'
 import phonesStore from './phones'
 import orderStore from './order'
 import TvStore from './televisions'
 import TabletsStore from './tablets'
 
-import * as phones from '../serverApiModel/phones'
-import * as tablets from '../serverApiModel/tablets'
-import * as televisions from '../serverApiModel/televisions'
-import * as apiCart from '../serverApiModel/cart'
+import * as phonesAPI from '../serverApiModel/phones'
+import * as tabletsAPI from '../serverApiModel/tablets'
+import * as tvsAPI from '../serverApiModel/televisions'
+import * as cartAPI from '../serverApiModel/cart'
 
 class RootStore {
+	api
+	localStorage
+	cart
+	phones
+	order
+	televisions
+	tablets
+
 	constructor() {
+
 		this.api = {
-			phones,
-			tablets,
-			televisions,
-			apiCart
-		}
-
-		//dev base url
-		/* this.baseUrlImgs = {
-			phones: '/assets/images/phones/',
-			televisions: '/assets/images/televisions/',
-			tablets: '/assets/images/tablets/'
-		} */
-
-		// todo: наверняка можно сделать baseUrl = ReactAppStore/dist/assets/ и функцию которая бы клеила остатки к этому адресу.
-		// и с помощью webpack'а менять этот baseUrl на /assets/ в зависимости от команды для сборки
-
-		//dist base url. for gitHub page
-		this.baseUrlImgs = {
-			phones: 'ReactAppStore/dist/assets/images/phones/',
-			televisions: 'ReactAppStore/dist/assets/images/televisions/',
-			tablets: 'ReactAppStore/dist/assets/images/tablets/'
+			phonesAPI,
+			tabletsAPI,
+			tvsAPI,
+			cartAPI
 		}
 
 		this.localStorage = localStorage

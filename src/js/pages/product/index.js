@@ -24,8 +24,6 @@ import 'swiper/css/scrollbar';
 
 /* code */
 function ProductPage({ button, ...props }) {
-	console.log('Page ProductPage')
-
 	SwiperCore.use([Navigation, Pagination, Scrollbar]);
 
 	/* the same code also is in a component pagelayout1 in filters */
@@ -34,6 +32,7 @@ function ProductPage({ button, ...props }) {
 		phones: "phones",
 		tablets: "tablets"
 	}
+	// todo: разобраться, как я тут сделал получение стора, кажется странным
 	const storeKey = props.match.path.substring(
 		props.match.path.indexOf("/") + 1, props.match.path.lastIndexOf("/")
 	)
@@ -45,12 +44,8 @@ function ProductPage({ button, ...props }) {
 
 	//cart store
 	const cart = props.rootStore.cart
-
 	const id = props.match.params.id
-
 	const product = store.product !== null ? store.product : {}
-
-	// console.log(product.rest)
 
 	//get product from server
 	useEffect(() => {
@@ -67,11 +62,10 @@ function ProductPage({ button, ...props }) {
 	}
 
 	let swiperSlides = Object.values({ ...product.imgs }).map((img) => {
-		console.log(img);
 		return < SwiperSlide
 			key={img}
 			className={moduleStyles.slide} >
-			<img src={`${store.baseUrlImgs}${img}`} />
+			<img src={`${store.baseImgsUrl}${img}`} />
 		</SwiperSlide >
 	})
 

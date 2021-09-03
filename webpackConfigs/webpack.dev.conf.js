@@ -12,7 +12,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 			// progress: true,
 		},
 		historyApiFallback: true,
-		hot: true,
 		liveReload: false,
 		static: baseWebpackConfig.externals.paths.dist,
 		port: 8080,

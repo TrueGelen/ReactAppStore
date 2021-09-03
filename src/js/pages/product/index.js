@@ -1,28 +1,18 @@
-/* lib */
 import React, { useEffect } from 'react'
+// todo: сделать
 // import PropTypes from 'prop-types'
-
-/* helpers */
 import withStore from '../../hocs/withStore'
-
-// /* components */
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
 import Counter from '../../components/inputs/minmax'
-
-// /* styles */
 import moduleStyles from './styles.module.scss'
 import mainStyles from '../../../scss/main.module.scss'
-
-/* swiper */
 import SwiperCore, { Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-/* code */
 function ProductPage({ button, ...props }) {
 	SwiperCore.use([Navigation, Pagination, Scrollbar]);
 
@@ -40,7 +30,7 @@ function ProductPage({ button, ...props }) {
 	//product store
 	const store = props.rootStore[storeMapForPage[storeKey]]
 
-	/*---- the same code also is in a component pagelayout1 in filters ---*/
+	/*---- the same code is also in a component pagelayout1 in filters ---*/
 
 	//cart store
 	const cart = props.rootStore.cart
@@ -65,7 +55,7 @@ function ProductPage({ button, ...props }) {
 		return < SwiperSlide
 			key={img}
 			className={moduleStyles.slide} >
-			<img src={`${store.baseImgsUrl}${img}`} />
+			<img src={`../${store.baseImgsUrl}${img}`} />
 		</SwiperSlide >
 	})
 

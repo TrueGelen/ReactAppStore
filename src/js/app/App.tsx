@@ -30,13 +30,6 @@ class AppComponent extends PureComponent<IAppComponentProps, IAppComponentState>
   };
 
   override render() {
-    // const a: number = 1;
-    // const b: number = 2;
-
-    // if (a === b) return "some";
-    // else return "some 2 and 'sd' as";
-    // console.log({ a, b });
-
     //to del later
     // @ts-ignore
     this.cartStore = this.props.rootStore.cart;
@@ -44,6 +37,10 @@ class AppComponent extends PureComponent<IAppComponentProps, IAppComponentState>
     const routsContainers = routes.map((route) => {
       return <Route path={route.url} component={route.container} exact={route.exact} key={route.url} />;
     });
+
+    /** some */
+    if (true) console.log(1);
+    else console.log(2);
 
     return (
       <Router>

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import withStore from '../../hocs/withStore'
-import { urlBuilder } from '../../routes'
+import { urlBuilder } from '../../routes/routes'
 import LineCard from '../../components/productCard/lineCard'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
 import Counter from '../../components/inputs/minmax'

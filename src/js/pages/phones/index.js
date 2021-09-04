@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import withStore from '../../hocs/withStore'
-import { urlBuilder } from '../../routes'
+import { urlBuilder } from '../../routes/routes'
 import PhoneCard from '../../components/productCard/phone'
 import BtnAddToCart from '../../components/buttons/btnAddToCart'
 import PageLayout from '../../components/pageLayouts/layout2'

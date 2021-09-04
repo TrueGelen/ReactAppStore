@@ -33,7 +33,7 @@ module.exports = {
 		paths: PATHS
 	},
 	entry: {
-		build: `${PATHS.src}/index.js`,
+		build: `${PATHS.src}/index.tsx`,
 		// module: `${PATHS.src}/your-module.js`,
 	},
 	output: {
@@ -48,7 +48,8 @@ module.exports = {
 			'~c': path.resolve(__dirname, 'src/js/components'),
 			'~p': path.resolve(__dirname, 'src/js/containers'),
 			'~s': path.resolve(__dirname, 'src/js/store')
-		}
+		},
+		extensions: [".tsx", ".ts", "jsx", ".js"]
 	},
 	optimization: {
 		splitChunks: {
@@ -73,6 +74,12 @@ module.exports = {
 	plugins,
 	module: {
 		rules: [
+			// /\.tsx?$/
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
 			// /\.jsx?$/
 			{
 				test: /\.jsx?$/,

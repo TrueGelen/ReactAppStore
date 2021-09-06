@@ -38,9 +38,7 @@ class AppComponent extends PureComponent<IAppComponentProps, IAppComponentState>
       return <Route path={route.url} component={route.container} exact={route.exact} key={route.url} />;
     });
 
-    /** some */
-    if (true) console.log(1);
-    else console.log(2);
+    // fixme:
 
     return (
       <Router>

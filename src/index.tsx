@@ -1,25 +1,34 @@
-import '../node_modules/normalize.css/normalize.css'
-import scss from './scss/main.module.scss'
-import React from 'react'
-import ReactDom from 'react-dom'
-import { Provider } from 'mobx-react'
+import "../node_modules/normalize.css/normalize.css";
+import scss from "./scss/main.module.scss";
+import React from "react";
+import ReactDom from "react-dom";
+import { Provider } from "mobx-react";
 // @ts-ignore
-import rootStore from './js/stores'
-import { App } from './js/app/App'
+import rootStore from "./js/stores";
+import { App } from "./js/app/App";
 
-//temporary import for adding items to database
-// import './js/temporaryToAddData/addDataToFirebase'
-
+// for init firebase =====================
+// import for adding items to database
+import "./js/initFirebaseDataApi/initFirebaseCollectionsApi";
+import { RootStoreContext } from "./js/utils/decorators/withRootStore/RootStoreContext";
+import { RootStore } from "./js/stores/rootStore";
 //temporary import for testing authentication
-// import './js/temporaryToAddData/auth_test'
+// import './js/initFirebaseDataApi/initFirebaseCollectionsApi'
+// eslint-disable-next-line no-console
+// for init firebase =====================
 
+console.log("Started");
 //console.log(scss)
 
-//get cart from local storage and then emb app to DOM
-const cartStore = rootStore.cart
-cartStore.getCartFromLocalStorage()
+// get cart from local storage and then emb app to DOM
+const cartStore = rootStore.cart;
+cartStore.getCartFromLocalStorage();
 
 ReactDom.render(
-	<Provider rootStore={rootStore}><App/></Provider>,
-	document.querySelector('#app')
-)
+  <Provider rootStore={rootStore}>
+    <RootStoreContext.Provider value={new RootStore()}>
+      <App />
+    </RootStoreContext.Provider>
+  </Provider>,
+  document.querySelector("#app")
+);

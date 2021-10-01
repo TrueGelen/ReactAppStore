@@ -1,40 +1,33 @@
 {
   "compilerOptions": {
-		"outDir": "./dist/",
+    "outDir": "./dist",
     // "baseUrl": "./src",
     // "rootDir": "./src",
     "target": "es5",
     "lib": ["DOM", "ES2020"],
-    "jsx": "react", // preserve
-    // "experimentalDecorators": true,
-    // "emitDecoratorMetadata": true,
-    "allowSyntheticDefaultImports": true,
-    "useUnknownInCatchVariables": false, // можно включить когда ошибки будут экземплярами класса Error
-    "exactOptionalPropertyTypes": false, // после включения strict
-    "moduleResolution": "node",
+    "declaration": true,
+    "jsx": "react",
+    "strict": true,
     "allowJs": true,
     "checkJs": false,
     "module": "ESNext",
-    "declaration": true,
     "sourceMap": true,
     "removeComments": true,
     "locale": "ru",
-    "noEmitOnError": true,
     "noImplicitAny": true,
-    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "moduleResolution": "node",
     "downlevelIteration": true,
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "error",
-    "noImplicitOverride": true,
-		"plugins": [{ "name": "typescript-plugin-css-modules" }]
+    // "esModuleInterop": true,
+    // "useUnknownInCatchVariables": false, // можно включить когда ошибки будут экземплярами класса Error
+    // "noEmitOnError": true,
+    // "skipLibCheck": true,
+    // "forceConsistentCasingInFileNames": true,
+    // "importsNotUsedAsValues": "error",
+    // "noImplicitOverride": true,
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
-  "exclude": ["/node_modules/", "**/node_modules", "**/.*/"]
+  "exclude": ["/node_modules/", "**/node_modules", "./dist/**/*", "**/.*/"]
 }
-
-// todo: settled on 03.09.2021 
-/* 
-	Установил пакеты для ts из начала доки на сайте webpack'а. И скопировал tsconfing из рабочего проекта.
-	Задачи: довнедрить и разобрать конфиг, потом установить преттир и линтер
- */

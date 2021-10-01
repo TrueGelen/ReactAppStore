@@ -1,97 +1,97 @@
 // @ts-ignore
-import phones from '../pages/phones'
+import phones from "../pages/phones/PhonesPage";
 // @ts-ignore
-import tvs from '../pages/televisions'
+import tvs from "../pages/televisions";
 // @ts-ignore
-import tablets from '../pages/tablets'
+import tablets from "../pages/tablets";
 // @ts-ignore
-import homePage from '../pages/homePage'
+import homePage from "../pages/homePage";
 // @ts-ignore
-import order from '../pages/order'
+import order from "../pages/order";
 // @ts-ignore
-import cart from '../pages/cart'
+import cart from "../pages/cart";
 // @ts-ignore
-import ProductPage from '../pages/product'
+import ProductPage from "../pages/product";
 // @ts-ignore
-import Page404 from '../pages/page404'
-import type { TRout, TRoutMap } from './routes.types'
+import Page404 from "../pages/page404";
+import type { TRout, TRoutMap } from "./routes.types";
 
 export const routes: TRout[] = [
-	{
-		name: 'cart',
-		url: '/cart',
-		container: cart,
-		exact: true
-	},
-	{
-		name: 'home',
-		url: '/',
-		container: homePage,
-		exact: true
-	},
-	{
-		name: 'phones',
-		url: '/phones',
-		container: phones,
-		exact: true
-	},
-	{
-		name: 'televisions',
-		url: '/televisions',
-		container: tvs,
-		exact: true
-	},
-	{
-		name: 'tablets',
-		url: '/tablets',
-		container: tablets,
-		exact: true
-	},
-	{
-		name: 'television',
-		url: '/televisions/:id',
-		container: ProductPage,
-		exact: true
-	},
-	{
-		name: 'phone',
-		url: '/phones/:id',
-		container: ProductPage,
-		exact: true
-	},
-	{
-		name: 'tablet',
-		url: '/tablets/:id',
-		container: ProductPage,
-		exact: true
-	},
-	{
-		name: 'order',
-		url: '/order',
-		container: order,
-		exact: true
-	},
-	{
-		name: '404',
-		url: '**',
-		container: Page404,
-		exact: true
-	}
-]
+  {
+    name: "cart",
+    url: "/cart",
+    container: cart,
+    exact: true,
+  },
+  {
+    name: "home",
+    url: "/",
+    container: homePage,
+    exact: true,
+  },
+  {
+    name: "phones",
+    url: "/phones",
+    container: phones,
+    exact: true,
+  },
+  {
+    name: "televisions",
+    url: "/televisions",
+    container: tvs,
+    exact: true,
+  },
+  {
+    name: "tablets",
+    url: "/tablets",
+    container: tablets,
+    exact: true,
+  },
+  {
+    name: "television",
+    url: "/televisions/:id",
+    container: ProductPage,
+    exact: true,
+  },
+  {
+    name: "phone",
+    url: "/phones/:id",
+    container: ProductPage,
+    exact: true,
+  },
+  {
+    name: "tablet",
+    url: "/tablets/:id",
+    container: ProductPage,
+    exact: true,
+  },
+  {
+    name: "order",
+    url: "/order",
+    container: order,
+    exact: true,
+  },
+  {
+    name: "404",
+    url: "**",
+    container: Page404,
+    exact: true,
+  },
+];
 
 const getRoutsMap = (routes: TRout[]): TRoutMap => {
-	const map: TRoutMap = {}
+  const map: TRoutMap = {};
 
-	routes.forEach(item => {
-		if (item.hasOwnProperty('name')) {
-			map[item.name] = item.url;
-		}
-	})
+  routes.forEach((item) => {
+    if (item.hasOwnProperty("name")) {
+      map[item.name] = item.url;
+    }
+  });
 
-	return map
-}
+  return map;
+};
 
-export const routesMap: TRoutMap = getRoutsMap(routes)
+export const routesMap: TRoutMap = getRoutsMap(routes);
 
 /* let urlBuilder = function (name, params) {
 	if (!routesMap.hasOwnProperty(name)) {
@@ -108,11 +108,12 @@ export const routesMap: TRoutMap = getRoutsMap(routes)
 	return url;
 } */
 
-export const urlBuilder = (name: string, id: string): string => {
-	if (!routesMap.hasOwnProperty(name)) {
-		console.error("page doesn't exist")
-		return null;
-	}
+// todo: по хорошему тут надо переработать роутинг
+export const urlBuilder = (name: string, id: string): string | null => {
+  if (!routesMap.hasOwnProperty(name)) {
+    console.error("page doesn't exist");
+    return null;
+  }
 
-	return `${routesMap[name].replace(":id", id)}`;
-}
+  return `${routesMap[name].replace(":id", id)}`;
+};

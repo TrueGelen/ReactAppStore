@@ -7,10 +7,6 @@ module.exports = {
 		"plugin:@typescript-eslint/recommended",
 		'plugin:react/recommended',
 		"plugin:react-hooks/recommended",
-		"plugin:import/recommended",
-		"plugin:import/typescript",
-		"plugin:import/errors",
-		"plugin:import/warnings",
 		"prettier",
 	],
 	parser: '@typescript-eslint/parser',
@@ -25,8 +21,8 @@ module.exports = {
 	plugins: [
 		'react',
 		'@typescript-eslint',
-		'prettier',
 		'react-hooks',
+		'prettier',
 	],
 	settings: {
 		react: {
@@ -35,7 +31,7 @@ module.exports = {
 	},
 	rules: {
 		"@typescript-eslint/ban-ts-comment": 0,
-		"no-console": 2,
+		"no-console": ["error", { allow: ["warn", "error"] }],
 		"react/sort-comp": [
 			1,
 			{
@@ -82,7 +78,7 @@ module.exports = {
 			},
 		],
 		"no-template-curly-in-string": "error",
-		"curly": 2
+		"curly": 2,
 	},
 	overrides: [
 		{
@@ -107,6 +103,8 @@ module.exports = {
 				// ------React Rules------//
 				"react/display-name": "off",
 				"react/prop-types": "off",
+				"@typescript-eslint/no-explicit-any": "off",
+				"@typescript-eslint/explicit-module-boundary-types": 0,
 			},
 		}
 	]

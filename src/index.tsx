@@ -1,21 +1,20 @@
+// for init firebase =====================
+// import for adding items to database
+import "./js/initFirebaseDataApi/initFirebaseCollectionsApi";
+//temporary import for testing authentication
+// import './js/initFirebaseDataApi/initFirebaseCollectionsApi'
+// eslint-disable-next-line no-console
+// for init firebase =====================
+console.log("some", some)
 import "../node_modules/normalize.css/normalize.css";
 import scss from "./scss/main.module.scss";
 import React from "react";
 import ReactDom from "react-dom";
 import { Provider } from "mobx-react";
-// @ts-ignore
 import rootStore from "./js/stores";
 import { App } from "./js/app/App";
-
-// for init firebase =====================
-// import for adding items to database
-import "./js/initFirebaseDataApi/initFirebaseCollectionsApi";
 import { RootStoreContext } from "./js/utils/decorators/withRootStore/RootStoreContext";
 import { RootStore } from "./js/stores/rootStore";
-//temporary import for testing authentication
-// import './js/initFirebaseDataApi/initFirebaseCollectionsApi'
-// eslint-disable-next-line no-console
-// for init firebase =====================
 
 console.log("Started");
 //console.log(scss)

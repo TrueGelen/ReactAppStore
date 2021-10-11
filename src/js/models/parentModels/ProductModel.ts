@@ -1,6 +1,6 @@
 import { isNil } from "lodash";
 
-export type TProductData<T> = {
+export type TProductData = {
   id: string;
   __typename: string;
   manufacturer: string;
@@ -9,7 +9,6 @@ export type TProductData<T> = {
   rest?: number;
   price?: number;
   imagesPath?: string[];
-  description?: T;
 };
 
 export interface IProductModel {
@@ -24,14 +23,14 @@ export interface IProductModel {
   getTypeName: () => string;
 }
 
-export abstract class ProductModel<T> implements IProductModel {
-  protected data: TProductData<T>;
+export abstract class ProductModel<T extends TProductData> implements IProductModel {
+  protected data: T;
 
   public static get typename(): string | null {
     return null;
   }
 
-  constructor(serverData: TProductData<T>) {
+  constructor(serverData: T) {
     this.data = serverData;
   }
 

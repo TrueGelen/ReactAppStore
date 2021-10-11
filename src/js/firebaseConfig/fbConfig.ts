@@ -1,8 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-// todo: уже не помню для чего они нужны и нужны ли
-// import "firebase/auth"
-// import "firebase/firebase-firestore"
 
 const firebaseConfig = {
 	apiKey: "AIzaSyDX0t1_h2GCY_IlDqwynOo9QuE64slu32c",

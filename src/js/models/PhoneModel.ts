@@ -1,8 +1,7 @@
-import { isNil } from "lodash";
 import { PHONE_MODEL_TYPENAME } from "../utils/constants/constants";
-import { ProductModel } from "./parentModels/ProductModel";
+import { ProductModel, TProductData } from "./parentModels/ProductModel";
 
-export type TPhoneDescription = {
+export type TPhoneData = TProductData & {
   diagonal: number;
   processor: string;
   os: string;
@@ -15,43 +14,40 @@ export type TPhoneDescription = {
   about?: string;
 };
 
-export class PhoneModel extends ProductModel<TPhoneDescription> {
+export class PhoneModel extends ProductModel<TPhoneData> {
   public static override get typename() {
     return PHONE_MODEL_TYPENAME;
   }
 
-  getDiagonal() {
-    return this.data?.description?.diagonal ?? null;
+  get diagonal() {
+    return this.data.diagonal;
   }
 
-  getProcessor() {
-    return this.data?.description?.processor ?? null;
+  get processor() {
+    return this.data.processor;
   }
 
-  getOS() {
-    return this.data?.description?.os ?? null;
+  get os() {
+    return this.data.os;
   }
 
-  getMemory() {
-    return this.data?.description?.memory ?? null;
+  get memory() {
+    return this.data.memory;
   }
 
-  getFullMemory() {
-    if (isNil(this.data?.description)) {
-      return null;
-    }
-    return `${this.data.description.memory.value} ${this.data.description.memory.measure}`;
+  get fullMemory() {
+    return `${this.data.memory.value} ${this.data.memory.measure}`;
   }
 
-  getFrontCamera() {
-    return this.data?.description?.frontCamera ?? null;
+  get frontCamera() {
+    return this.data?.frontCamera ?? null;
   }
 
-  getMainCamera() {
-    return this.data?.description?.mainCamera ?? null;
+  get mainCamera() {
+    return this.data?.mainCamera ?? null;
   }
 
-  getAbout() {
-    return this.data?.description?.about ?? null;
+  get about() {
+    return this.data?.about ?? null;
   }
 }

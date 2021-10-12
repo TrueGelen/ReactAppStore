@@ -1,3 +1,3 @@
-import { addPhonesToServer } from "./PhonesData";
+import { addPhonesToServer } from "./phonesData";
 
 // addPhonesToServer()

@@ -6,12 +6,13 @@ import withStore from "../hocs/withStore";
 import { routes, routesMap } from "../routes/routes";
 import styles from "./app.module.scss";
 import mainStyles from "../../scss/main.module.scss";
-import { Localization, TLoc } from "../utils/Localization/Localization";
+import { Localization, TLanguage } from "../utils/Localization/Localization";
 import { RU_LOC } from "../utils/constants/constants";
 import { LocalizationContext } from "../utils/decorators/withLoc/LocalizationContext";
-import { Select } from "../components/Select/Select";
+import { Select } from "../components/LanguageSelect/LanguageSelect";
 import type { SelectInputProps } from "@material-ui/core/Select/SelectInput";
 import { CART, PHONES, TABLETS, TELEVISIONS } from "../utils/localization";
+import { HeaderDesktop } from "../components/HeaderDesktop/HeaderDesktop";
 
 export interface IAppComponentState {
   mobMenu: boolean;
@@ -39,9 +40,9 @@ class AppComponent extends PureComponent<IAppComponentProps, IAppComponentState>
     this.setState({ mobMenu: false });
   };
 
-  public changeLocalization: SelectInputProps<TLoc>["onChange"] = (e) => {
+  public changeLocalization: SelectInputProps<TLanguage>["onChange"] = (e) => {
     const { localization } = this.state;
-    const newValue = e.target.value as TLoc;
+    const newValue = e.target.value as TLanguage;
     if (newValue !== localization.getLanguage()) {
       this.setState({ localization: new Localization(newValue) });
     }
@@ -53,115 +54,76 @@ class AppComponent extends PureComponent<IAppComponentProps, IAppComponentState>
     // @ts-ignore
     // this.cartStore = this.props.rootStore.cart;
 
-    const routsContainers = routes.map((route) => {
-      return <Route path={route.url} component={route.container} exact={route.exact} key={route.url} />;
+    const routsPages = routes.map((route) => {
+      return (
+        <Route path={route.url} component={route.container} exact={route.exact} key={route.url} />
+      );
     });
 
     return (
       <LocalizationContext.Provider value={localization}>
         <Router>
-          <>
-            <header className={styles.header}>
-              <div className={`${mainStyles.container} ${styles.container_mod}`}>
-                <div className={`${styles.headerWrapper} ${mainStyles.noselect}`}>
-                  <div className={styles.logo}>
-                    <Link to={routesMap.home}>
-                      <span className={styles.logoParody}>{"Gparody"}</span>
-                      {"Shop"}
-                    </Link>
-                  </div>
-                  <menu className={styles.menu}>
-                    <ul className={styles.menu__ul}>
-                      <NavLink
-                        className={styles.menu__a}
-                        to={routesMap.televisions}
-                        activeClassName={styles.activeLink}
-                      >
-                        <li className={styles.menu__li}>{localization.getLocalized(TELEVISIONS)}</li>
-                      </NavLink>
-                      <NavLink className={styles.menu__a} to={routesMap.phones} activeClassName={styles.activeLink}>
-                        <li className={styles.menu__li}>{localization.getLocalized(PHONES)}</li>
-                      </NavLink>
-                      <NavLink className={styles.menu__a} to={routesMap.tablets} activeClassName={styles.activeLink}>
-                        <li className={styles.menu__li}>{localization.getLocalized(TABLETS)}</li>
-                      </NavLink>
-                    </ul>
-                  </menu>
-                  <div className={styles.cart}>
-                    <NavLink to={routesMap.cart} activeClassName={styles.activeLink}>
-                      {localization.getLocalized(CART)}
-                    </NavLink>
-                    {/* <div className={styles.totalInCart}>{this.cartStore.totalPositionsInCart}</div> */}
-                    {/* <div className={styles.totalInCart}>
-                    <p>
-                      {
-                        // @ts-ignore
-                        this.cartStore.totalProductsInCart
-                      }
-                    </p>
-                  </div> */}
-                  </div>
-                  {/* <div className={styles.language}>
-                    <Select
-                      label={"Language"}
-                      value={localization.getLanguage()}
-                      itemList={Localization.locList}
-                      onChange={this.changeLocalization}
-                      selectClassName={styles.languageSelect}
-                      itemClassName={styles.languageItemSelect}
-                      iconClassName={styles.languageArrowIcon}
-                      rootClassName={styles.languageSelectRoot}
-                      labelClassName={styles.languageSelectLabel}
-                    />
-                  </div> */}
-                  <div className={styles.burger} onClick={this.openMobMenu}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                  </div>
-                </div>
-              </div>
-            </header>
+          <HeaderDesktop handleLocalizationChange={this.changeLocalization} />
+          {/* content */}
+          <main className={styles.content}>
+            <div className={`${mainStyles.container} ${styles.container_mod}`}>
+              <Switch>{routsPages}</Switch>
+            </div>
+          </main>
 
-            {/* content */}
-            <main className={styles.content}>
-              <div className={`${mainStyles.container} ${styles.container_mod}`}>
-                <Switch>{routsContainers}</Switch>
+          {/* 
+<div className={_s.burger} onClick={this.openMobMenu}>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div> */}
+          {/* mobMenu */}
+          {this.state.mobMenu && (
+            <menu className={styles.mobMenu}>
+              <div className={styles.closeMobMenu} onClick={this.hideMobMenu}>
+                <div></div>
+                <div></div>
               </div>
-            </main>
-
-            {/* mobMenu */}
-            {this.state.mobMenu && (
-              <menu className={styles.mobMenu}>
-                <div className={styles.closeMobMenu} onClick={this.hideMobMenu}>
-                  <div></div>
-                  <div></div>
-                </div>
-                <ul>
-                  <NavLink className={styles.menu__a} to={routesMap.cart} activeClassName={styles.activeLink}>
-                    <li className={styles.menu__li} onClick={this.hideMobMenu}>
-                      {localization.getLocalized(CART)}
-                    </li>
-                  </NavLink>
-                  <NavLink className={styles.menu__a} to={routesMap.televisions} activeClassName={styles.activeLink}>
-                    <li className={styles.menu__li} onClick={this.hideMobMenu}>
-                      {localization.getLocalized(TELEVISIONS)}
-                    </li>
-                  </NavLink>
-                  <NavLink className={styles.menu__a} to={routesMap.phones} activeClassName={styles.activeLink}>
-                    <li className={styles.menu__li} onClick={this.hideMobMenu}>
-                      {localization.getLocalized(PHONES)}
-                    </li>
-                  </NavLink>
-                  <NavLink className={styles.menu__a} to={routesMap.tablets} activeClassName={styles.activeLink}>
-                    <li className={styles.menu__li} onClick={this.hideMobMenu}>
-                      {localization.getLocalized(TABLETS)}
-                    </li>
-                  </NavLink>
-                </ul>
-              </menu>
-            )}
-          </>
+              <ul>
+                <NavLink
+                  className={styles.menu__a}
+                  to={routesMap.cart}
+                  activeClassName={styles.activeLink}
+                >
+                  <li className={styles.menu__li} onClick={this.hideMobMenu}>
+                    {localization.getLocalized(CART)}
+                  </li>
+                </NavLink>
+                <NavLink
+                  className={styles.menu__a}
+                  to={routesMap.televisions}
+                  activeClassName={styles.activeLink}
+                >
+                  <li className={styles.menu__li} onClick={this.hideMobMenu}>
+                    {localization.getLocalized(TELEVISIONS)}
+                  </li>
+                </NavLink>
+                <NavLink
+                  className={styles.menu__a}
+                  to={routesMap.phones}
+                  activeClassName={styles.activeLink}
+                >
+                  <li className={styles.menu__li} onClick={this.hideMobMenu}>
+                    {localization.getLocalized(PHONES)}
+                  </li>
+                </NavLink>
+                <NavLink
+                  className={styles.menu__a}
+                  to={routesMap.tablets}
+                  activeClassName={styles.activeLink}
+                >
+                  <li className={styles.menu__li} onClick={this.hideMobMenu}>
+                    {localization.getLocalized(TABLETS)}
+                  </li>
+                </NavLink>
+              </ul>
+            </menu>
+          )}
         </Router>
       </LocalizationContext.Provider>
     );

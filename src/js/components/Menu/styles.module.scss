@@ -1,0 +1,12 @@
+.menu {
+  // border: 1px solid red;
+  font-family: sans-serif;
+  border-radius: $br;
+  background-color: $menuBg;
+
+  &__li {
+    cursor: pointer;
+    color: white;
+    font-size: 19px;
+  }
+}

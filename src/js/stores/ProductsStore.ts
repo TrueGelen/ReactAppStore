@@ -7,7 +7,7 @@ import { PhoneModel, TPhoneData, TPhoneDescription } from "../models/PhoneModel"
 import type { TProductData } from "../models/parentModels/ProductModel";
 import type { ProductApi } from "../serverApiModel/ProductApi";
 import { RU_LOC } from "../utils/constants/constants";
-import type { TLoc } from "../utils/Localization/Localization";
+import type { TLanguage } from "../utils/Localization/Localization";
 import type { IRootStore } from "./rootStore";
 
 // todo: пока это просто функция, подумать над тем, чем это должно быть
@@ -23,7 +23,7 @@ export type TProductModels = PhoneModel; /* | TabletModel | TelevisionModel*/
  * P - базовый путь к картинкам */
 export interface IProductsStore<T extends TProductModels> {
 	getImageURL: (url: string) => string;
-	requestProducts: (loc: TLoc) => void;
+	requestProducts: (loc: TLanguage) => void;
 	getProducts: () => T[] | null;
 	getProductsAndIsProductsLoading: () => { products: T[] | null; isProductsLoading: boolean };
 	isProductsLoading: boolean;
@@ -69,7 +69,7 @@ export class ProductsStore<T extends TProductModels> implements IProductsStore<T
 		return `${this.baseImagesPath}${url}`;
 	}
 
-	async requestProducts(loc: TLoc) {
+	async requestProducts(loc: TLanguage) {
 		this.setIsProductsLoading(true);
 		const collectionName = this.getCollectionNameByLoc(loc);
 		const serverProducts = await this.api.getProducts(collectionName);
@@ -115,7 +115,7 @@ export class ProductsStore<T extends TProductModels> implements IProductsStore<T
 	// getProductById: TGetProductById;
 	// getProductsByFilters: TGetProductsByFilters;
 
-	private getCollectionNameByLoc(loc: TLoc) {
+	private getCollectionNameByLoc(loc: TLanguage) {
 		if (loc === RU_LOC) {
 			return this.rusLocCollectionName;
 		}

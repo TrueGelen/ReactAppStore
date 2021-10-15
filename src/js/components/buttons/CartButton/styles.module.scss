@@ -1,0 +1,37 @@
+.cart {
+  position: relative;
+  background-color: $menuBg;
+  font-family: sans-serif;
+  border-radius: $br;
+
+  @media screen and(min-width: 1921px) {
+    border-radius: $br1921;
+  }
+
+  @media screen and(max-width: 1200px) {
+    border-radius: $br;
+  }
+
+  & > a {
+    position: relative;
+    display: block;
+    padding: 11px 22px;
+    color: white;
+    font-size: 19px;
+    border-radius: $br;
+    cursor: pointer;
+    transition: 0.2s;
+
+    @media screen and(min-width: 1921px) {
+      border-radius: $br1921;
+      font-size: 1vw;
+      padding: 0.55vw 1vw;
+    }
+
+    @media screen and(max-width: 1200px) {
+      border-radius: $br;
+      font-size: 2vw;
+      padding: 1vw 2vw;
+    }
+  }
+}
